@@ -1,2 +1,11 @@
-# Nuevo proyecto
-Inserte la descripción de su proyecto aquí
+Grupo
+
+Lucio Zuccolo
+Cesar Mazzitelli
+Lautaro Blanco
+
+Juego
+
+Pokemon
+
+A desarrollar...
