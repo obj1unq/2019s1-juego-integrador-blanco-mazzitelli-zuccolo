@@ -1,0 +1,22 @@
+import wollok.game.*
+import pokemon.*
+import estadosYTipo.*
+import ataques.*
+
+program Pokemon {
+	
+	const planta = new Tipo(ataques = [latigoCepa, polvoVeneno])
+	const agua = new Tipo(debilidad = planta, ataques = [pistolaDeAgua, hidroBomba])
+	const fuego = new Tipo(debilidad = agua, ataques = [lanzallamas, fuegoFatuo])
+	planta.debilidad(fuego)
+	
+	const charmander = new PokemonFase1(fuego, 50, 50, 50, 50)
+	
+	
+	game.height(10)
+	game.width(10)
+	
+	
+	
+	game.start()
+}
