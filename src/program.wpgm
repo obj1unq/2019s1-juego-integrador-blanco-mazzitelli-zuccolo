@@ -5,18 +5,28 @@ import ataques.*
 
 program Pokemon {
 	
+	//Inicializaciones y Valores Principales.
 	const planta = new Tipo(ataques = [latigoCepa, polvoVeneno])
 	const agua = new Tipo(debilidad = planta, ataques = [pistolaDeAgua, hidroBomba])
 	const fuego = new Tipo(debilidad = agua, ataques = [lanzallamas, fuegoFatuo])
 	planta.debilidad(fuego)
 	
+	const ash = new Entrenador()
+	const bulvasaur = new PokemonFase1(planta, 50, 50, 50, 50)
 	const charmander = new PokemonFase1(fuego, 50, 50, 50, 50)
+	ash.pokemon(bulvasaur)
+		
+	//Visuals
+	game.addVisualIn(charmander, game.at(1.randomUpTo(10).truncate(0), 2.randomUpTo(3).truncate(0)))
+	game.addVisualCharacterIn(ash, game.at(0, 0))
 	
+	game.addVisualIn("ash.png", game.at(8, 8))
 	
 	game.height(10)
 	game.width(10)
 	
-	
+	//Colisiones
+	game.whenCollideDo (ash, { pokemonSalvaje => pokemonSalvaje.colisionasteCon(ash) })
 	
 	game.start()
 }

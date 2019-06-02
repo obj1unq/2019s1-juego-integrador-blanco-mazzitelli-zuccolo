@@ -1,3 +1,4 @@
+import wollok.game.*
 import estadosYTipo.*
 import ataques.*
 
@@ -23,7 +24,9 @@ class Pokemon {
       	velocidad = _velocidad
       	xpAlMorir = _xpAlMorir 
  	}	
-
+	
+	method image() = "bush.png"
+	
 	//Getters
 	method exprecienciaAlMorir() = xpAlMorir
 		
@@ -38,6 +41,26 @@ class Pokemon {
 		vida -= ataque.danio()
 		ataque.cambiarEstado(self)
 	}
+	
+	//Colision con Entrenador
+	
+	method colisionasteCon(entrenador) {
+		
+		game.clear()
+		/*Visuales ataque 1 ( game.at(0, 0) game.at(1, 0) game.at(2, 0) )
+		 * Visuales ataque 1 ( game.at(3, 0) game.at(4, 0) game.at(5, 0) )
+		 * Visuales explicacion teclas ( game.at(6, 0) game.at(7, 0) game.at(8, 0) game.at(9, 0))
+		 * 
+		 */
+		
+	}
+}
+
+class Entrenador {
+	
+	var property pokemon
+	
+	method image() = "ash.png"
 }
 
 class PokemonFase1 inherits Pokemon {

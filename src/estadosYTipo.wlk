@@ -24,7 +24,7 @@ object envenenado {
 
 class Tipo {
 	
-	const property debilidad = 1
+	var property debilidad = 1
 	
 	const ataques = []
 }
