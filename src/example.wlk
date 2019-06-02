@@ -1,6 +1,6 @@
 /** First Wollok example */
 object wollok {
-	var ghola
+	var hola
 	method howAreYou() {
 		return 'I am Wolloktastic!'
 	}
