@@ -4,42 +4,47 @@ import ataques.*
 
 class Pokemon {
 
-	var tipo 	
+	const tipo 
 	var property vida
-	var property fuerza
+	var property ataque
+	var property defensa
 	var property velocidad
-
+	var property estado = natural
+	const estadoEvolutivo
+	const movimientos = []
+	
 	var property xp = 0
 	var xpAlMorir
 	
-	var property estado = natural
-
-	var property position
-	
-	constructor(_tipo, _vida, _fuerza, _velocidad, _xpAlMorir) {
-
+	constructor(_tipo, _vida, _ataque, _defensa, _velocidad, _xpAlMorir, _estadoEvolutivo) {
       	tipo = _tipo
       	vida = _vida
-      	fuerza = _fuerza
+      	ataque = _ataque
+      	defensa = _defensa
       	velocidad = _velocidad
       	xpAlMorir = _xpAlMorir 
+      	estadoEvolutivo = _estadoEvolutivo
  	}	
-	
+
 	method image() = "bush.png"
+	
+	method listaDeMovimientos() = movimientos
+	method aprenderMovimiento(movimiento) { movimientos.add(movimiento) }
 	
 	//Getters
 	method exprecienciaAlMorir() = xpAlMorir
-		
+	
+	//Actions
 	method sumarXp(pokemon) { xp += pokemon.xpAlMorir() }
 	
-	method atacar(pokemon, ataque) {
+	method atacar(pokemon, movimiento) {
 		
-		pokemon.recibirAtaque(ataque)
+		pokemon.recibirAtaque(movimiento)
 	}
 	
-	method recibirAtaque(ataque) {
-		vida -= ataque.danio()
-		ataque.cambiarEstado(self)
+	method recibirAtaque(movimiento) {
+		vida -= movimiento.danio()
+		movimiento.cambiarEstado(self)
 	}
 	
 	//Colision con Entrenador
@@ -59,18 +64,7 @@ class Pokemon {
 class Entrenador {
 	
 	var property pokemon
+	var property position = game.at(0,0)
 	
-	method image() = "ash.png"
-}
-
-class PokemonFase1 inherits Pokemon {
-	
-}
-
-class PokemonFase2 inherits Pokemon {
-	
-}
-
-class PokemonFase3 inherits Pokemon {
-	
+	method image() = "red.png"
 }

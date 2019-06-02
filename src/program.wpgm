@@ -2,31 +2,70 @@ import wollok.game.*
 import pokemon.*
 import estadosYTipo.*
 import ataques.*
+import listaDePokemon.*
 
 program Pokemon {
 	
-	//Inicializaciones y Valores Principales.
-	const planta = new Tipo(ataques = [latigoCepa, polvoVeneno])
-	const agua = new Tipo(debilidad = planta, ataques = [pistolaDeAgua, hidroBomba])
-	const fuego = new Tipo(debilidad = agua, ataques = [lanzallamas, fuegoFatuo])
-	planta.debilidad(fuego)
+	//Config.
+	game.height(15)
+	game.width(15)
 	
-	const ash = new Entrenador()
-	const bulvasaur = new PokemonFase1(planta, 50, 50, 50, 50)
-	const charmander = new PokemonFase1(fuego, 50, 50, 50, 50)
-	ash.pokemon(bulvasaur)
+	//Inicializaciones y Valores Principales.
+	
+	//Debilidades
+	planta.agregarDebilidad(fuego)
+	planta.agregarDebilidad(veneno)
+	planta.agregarDebilidad(volador)
+	fuego.agregarDebilidad(agua)
+	agua.agregarDebilidad(planta)
+	veneno.agregarDebilidad(psiquico)
+	psiquico.agregarDebilidad(siniestro)
+	
+	normal.agregarDebilidad(fuego)  // ??? si no lo pongo me explota
+	
+	//Movimientos.
+	charmander.aprenderMovimiento(ascuas)
+	charmander.aprenderMovimiento(araniazo)
+	charmeleon.aprenderMovimiento(pirotecnia)
+	charmeleon.aprenderMovimiento(cuchillada)
+	charizard.aprenderMovimiento(lanzallamas)
+	charizard.aprenderMovimiento(tajoAereo)
+	
+	bulbasaur.aprenderMovimiento(latigoCepa)
+	bulbasaur.aprenderMovimiento(placaje)
+	ivysaur.aprenderMovimiento(hojaAfilada)
+	ivysaur.aprenderMovimiento(cargaToxica)
+	venasaur.aprenderMovimiento(rayoSolar)
+	venasaur.aprenderMovimiento(bombaLodo)
+	
+	squirtle.aprenderMovimiento(pistolaAgua)
+	squirtle.aprenderMovimiento(placaje)
+	wartortle.aprenderMovimiento(rayoBurbuja)
+	wartortle.aprenderMovimiento(mordisco)
+	blastoise.aprenderMovimiento(hidroBomba)
+	blastoise.aprenderMovimiento(triturar)
+	
+	mewtwo.aprenderMovimiento(psiquico)
+	mewtwo.aprenderMovimiento(concentrar)
+	
+	const red = new Entrenador()
+	red.pokemon(charmander)
 		
 	//Visuals
-	game.addVisualIn(charmander, game.at(1.randomUpTo(10).truncate(0), 2.randomUpTo(3).truncate(0)))
-	game.addVisualCharacterIn(ash, game.at(0, 0))
+	game.addVisualIn(bulbasaur, game.at(0.randomUpTo(15).truncate(0), 2.randomUpTo(4).truncate(0)))
+	game.addVisualIn(squirtle, game.at(0.randomUpTo(15).truncate(0), 2.randomUpTo(4).truncate(0)))
+
+	game.addVisualIn(ivysaur, game.at(0.randomUpTo(15).truncate(0), 6.randomUpTo(8).truncate(0)))
+	game.addVisualIn(wartortle, game.at(0.randomUpTo(15).truncate(0), 6.randomUpTo(8).truncate(0)))
 	
-	game.addVisualIn("ash.png", game.at(8, 8))
+	game.addVisualIn(venasaur, game.at(0.randomUpTo(15).truncate(0), 10.randomUpTo(12).truncate(0)))
+	game.addVisualIn(blastoise, game.at(0.randomUpTo(15).truncate(0), 10.randomUpTo(12).truncate(0)))
 	
-	game.height(10)
-	game.width(10)
+	game.addVisualIn(mewtwo, game.at(7, 14))
+	game.addVisualCharacter(red)
 	
 	//Colisiones
-	game.whenCollideDo (ash, { pokemonSalvaje => pokemonSalvaje.colisionasteCon(ash) })
+	game.whenCollideDo (red, { pokemonSalvaje => pokemonSalvaje.colisionasteCon(red) })
 	
 	game.start()
 }
