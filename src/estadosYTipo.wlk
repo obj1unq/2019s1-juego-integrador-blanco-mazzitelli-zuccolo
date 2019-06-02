@@ -27,5 +27,4 @@ class Tipo {
 	const property debilidad = 1
 	
 	const ataques = []
-	
 }
