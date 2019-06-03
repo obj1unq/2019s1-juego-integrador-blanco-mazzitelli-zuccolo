@@ -20,7 +20,7 @@ object ascuas {
 		if(0.randomUpTo(100).truncate(0) <= 40) { pokemon.estado(quemado) }
 		else { }
 	}
-}
+} 
 
 object araniazo {
 	const potencia = 40

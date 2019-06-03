@@ -3,17 +3,21 @@ import pokemon.*
 import estadosYTipo.*
 import ataques.*
 import listaDePokemon.*
-
+import mapa.*
 program Pokemon {
 	
 	//Config.
-	game.height(15)
-	game.width(15)
+	game.title("Pokemon")
+	game.height(16)
+	game.width(31)
+	game.ground("suelo.png")
+	 
+	mapa.dibujar()
 	
 	//Inicializaciones y Valores Principales.
 	
 	//Debilidades
-	planta.agregarDebilidad(fuego)
+	planta.agregarDebilidad(fuego) 
 	planta.agregarDebilidad(veneno)
 	planta.agregarDebilidad(volador)
 	fuego.agregarDebilidad(agua)
@@ -48,8 +52,18 @@ program Pokemon {
 	mewtwo.aprenderMovimiento(psiquico)
 	mewtwo.aprenderMovimiento(concentrar)
 	
-	const red = new Entrenador()
-	red.pokemon(charmander)
+	
+	const ash1 = new Entrenador()
+	game.addVisual(ash1)
+	ash1.pokemon(charmander) 
+		 
+	//	TECLADO
+	keyboard.up().onPressDo { ash1.move(ash1.position().up(1)) }
+	keyboard.down().onPressDo { ash1.move(ash1.position().down(1)) }
+	keyboard.left().onPressDo { ash1.move(ash1.position().left(1)) }
+	keyboard.right().onPressDo { ash1.move(ash1.position().right(1)) }
+
+	
 		
 	//Visuals
 	game.addVisualIn(bulbasaur, game.at(0.randomUpTo(15).truncate(0), 2.randomUpTo(4).truncate(0)))
@@ -61,11 +75,12 @@ program Pokemon {
 	game.addVisualIn(venasaur, game.at(0.randomUpTo(15).truncate(0), 10.randomUpTo(12).truncate(0)))
 	game.addVisualIn(blastoise, game.at(0.randomUpTo(15).truncate(0), 10.randomUpTo(12).truncate(0)))
 	
-	game.addVisualIn(mewtwo, game.at(7, 14))
-	game.addVisualCharacter(red)
+	//game.addVisualIn(mewtwo, game.at(7, 14))
+	//game.addVisualCharacter(red)
+	
 	
 	//Colisiones
-	game.whenCollideDo (red, { pokemonSalvaje => pokemonSalvaje.colisionasteCon(red) })
+	game.whenCollideDo (ash1, { pokemonSalvaje => pokemonSalvaje.colisionasteCon(ash1) })
 	
 	game.start()
 }
