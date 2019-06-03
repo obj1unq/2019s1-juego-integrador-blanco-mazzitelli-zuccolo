@@ -8,6 +8,8 @@ object mapa {
 		//	VISUALES
 		// camino
 		
+		
+		
 		game.addVisualIn(camino, game.at(1,1))
 		
 		
