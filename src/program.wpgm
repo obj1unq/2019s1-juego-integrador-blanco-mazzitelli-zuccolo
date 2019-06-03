@@ -1,0 +1,71 @@
+import wollok.game.*
+import pokemon.*
+import estadosYTipo.*
+import ataques.*
+import listaDePokemon.*
+
+program Pokemon {
+	
+	//Config.
+	game.height(15)
+	game.width(15)
+	
+	//Inicializaciones y Valores Principales.
+	
+	//Debilidades
+	planta.agregarDebilidad(fuego)
+	planta.agregarDebilidad(veneno)
+	planta.agregarDebilidad(volador)
+	fuego.agregarDebilidad(agua)
+	agua.agregarDebilidad(planta)
+	veneno.agregarDebilidad(psiquico)
+	psiquico.agregarDebilidad(siniestro)
+	
+	normal.agregarDebilidad(fuego)  // ??? si no lo pongo me explota
+	
+	//Movimientos.
+	charmander.aprenderMovimiento(ascuas)
+	charmander.aprenderMovimiento(araniazo)
+	charmeleon.aprenderMovimiento(pirotecnia)
+	charmeleon.aprenderMovimiento(cuchillada)
+	charizard.aprenderMovimiento(lanzallamas)
+	charizard.aprenderMovimiento(tajoAereo)
+	
+	bulbasaur.aprenderMovimiento(latigoCepa)
+	bulbasaur.aprenderMovimiento(placaje)
+	ivysaur.aprenderMovimiento(hojaAfilada)
+	ivysaur.aprenderMovimiento(cargaToxica)
+	venasaur.aprenderMovimiento(rayoSolar)
+	venasaur.aprenderMovimiento(bombaLodo)
+	
+	squirtle.aprenderMovimiento(pistolaAgua)
+	squirtle.aprenderMovimiento(placaje)
+	wartortle.aprenderMovimiento(rayoBurbuja)
+	wartortle.aprenderMovimiento(mordisco)
+	blastoise.aprenderMovimiento(hidroBomba)
+	blastoise.aprenderMovimiento(triturar)
+	
+	mewtwo.aprenderMovimiento(psiquico)
+	mewtwo.aprenderMovimiento(concentrar)
+	
+	const red = new Entrenador()
+	red.pokemon(charmander)
+		
+	//Visuals
+	game.addVisualIn(bulbasaur, game.at(0.randomUpTo(15).truncate(0), 2.randomUpTo(4).truncate(0)))
+	game.addVisualIn(squirtle, game.at(0.randomUpTo(15).truncate(0), 2.randomUpTo(4).truncate(0)))
+
+	game.addVisualIn(ivysaur, game.at(0.randomUpTo(15).truncate(0), 6.randomUpTo(8).truncate(0)))
+	game.addVisualIn(wartortle, game.at(0.randomUpTo(15).truncate(0), 6.randomUpTo(8).truncate(0)))
+	
+	game.addVisualIn(venasaur, game.at(0.randomUpTo(15).truncate(0), 10.randomUpTo(12).truncate(0)))
+	game.addVisualIn(blastoise, game.at(0.randomUpTo(15).truncate(0), 10.randomUpTo(12).truncate(0)))
+	
+	game.addVisualIn(mewtwo, game.at(7, 14))
+	game.addVisualCharacter(red)
+	
+	//Colisiones
+	game.whenCollideDo (red, { pokemonSalvaje => pokemonSalvaje.colisionasteCon(red) })
+	
+	game.start()
+}
