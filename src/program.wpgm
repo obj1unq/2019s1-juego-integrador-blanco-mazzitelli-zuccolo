@@ -4,19 +4,19 @@ import estadosYTipo.*
 import ataques.*
 import listaDePokemon.*
 import mapa.*
+
 program Pokemon {
 	
-	//Config.
+	// Config.
 	game.title("Pokemon")
 	game.height(16)
 	game.width(31)
-	game.ground("suelo.png")
 	 
-	mapa.dibujar()
+	mapa.dibujarMapa()
 	
-	//Inicializaciones y Valores Principales.
+	// Inicializaciones y Valores Principales.
 	
-	//Debilidades
+	// Debilidades
 	planta.agregarDebilidad(fuego) 
 	planta.agregarDebilidad(veneno)
 	planta.agregarDebilidad(volador)
@@ -27,7 +27,7 @@ program Pokemon {
 	
 	normal.agregarDebilidad(fuego)  // ??? si no lo pongo me explota
 	
-	//Movimientos.
+	// Movimientos.
 	charmander.aprenderMovimiento(ascuas)
 	charmander.aprenderMovimiento(araniazo)
 	charmeleon.aprenderMovimiento(pirotecnia)
@@ -52,35 +52,27 @@ program Pokemon {
 	mewtwo.aprenderMovimiento(psiquico)
 	mewtwo.aprenderMovimiento(concentrar)
 	
-	
+	// Entrenador 
 	const ash1 = new Entrenador()
-	game.addVisual(ash1)
-	ash1.pokemon(charmander) 
-		 
-	//	TECLADO
+	game.addVisual(ash1)	
+	ash1.pokemon(charmander)
+	
+	//No se puede usar metodo addVisualCharacter porque sino no hay manera de recordar la lastPosition.
 	keyboard.up().onPressDo { ash1.move(ash1.position().up(1)) }
 	keyboard.down().onPressDo { ash1.move(ash1.position().down(1)) }
 	keyboard.left().onPressDo { ash1.move(ash1.position().left(1)) }
 	keyboard.right().onPressDo { ash1.move(ash1.position().right(1)) }
-
 	
-		
 	//Visuals
-	game.addVisualIn(bulbasaur, game.at(0.randomUpTo(15).truncate(0), 2.randomUpTo(4).truncate(0)))
-	game.addVisualIn(squirtle, game.at(0.randomUpTo(15).truncate(0), 2.randomUpTo(4).truncate(0)))
-
-	game.addVisualIn(ivysaur, game.at(0.randomUpTo(15).truncate(0), 6.randomUpTo(8).truncate(0)))
-	game.addVisualIn(wartortle, game.at(0.randomUpTo(15).truncate(0), 6.randomUpTo(8).truncate(0)))
-	
-	game.addVisualIn(venasaur, game.at(0.randomUpTo(15).truncate(0), 10.randomUpTo(12).truncate(0)))
-	game.addVisualIn(blastoise, game.at(0.randomUpTo(15).truncate(0), 10.randomUpTo(12).truncate(0)))
-	
-	//game.addVisualIn(mewtwo, game.at(7, 14))
-	//game.addVisualCharacter(red)
-	
+	game.addVisualIn(bulbasaur, game.at(5.randomUpTo(10).truncate(0), 1.randomUpTo(9).truncate(0)))	
+	game.addVisualIn(squirtle, game.at(5.randomUpTo(10).truncate(0), 1.randomUpTo(9).truncate(0)))
+	game.addVisualIn(ivysaur, game.at(12.randomUpTo(29).truncate(0), 1.randomUpTo(3).truncate(0)))
+	game.addVisualIn(wartortle, game.at(12.randomUpTo(29).truncate(0), 1.randomUpTo(3).truncate(0)))
+	game.addVisualIn(venasaur, game.at(16.randomUpTo(25).truncate(0), 11.randomUpTo(14).truncate(0)))
+	game.addVisualIn(blastoise, game.at(16.randomUpTo(25).truncate(0), 11.randomUpTo(14).truncate(0)))
 	
 	//Colisiones
-	game.whenCollideDo (ash1, { pokemonSalvaje => pokemonSalvaje.colisionasteCon(ash1) })
+	game.whenCollideDo (ash1, { entidad => entidad.colisionasteCon(ash1) })
 	
 	game.start()
 }
