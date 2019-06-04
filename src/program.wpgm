@@ -11,7 +11,6 @@ program Pokemon {
 	game.title("Pokemon")
 	game.height(16)
 	game.width(31)
-	 
 	mapa.dibujarMapa()
 	
 	// Inicializaciones y Valores Principales.

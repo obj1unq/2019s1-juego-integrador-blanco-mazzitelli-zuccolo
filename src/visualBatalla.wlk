@@ -6,13 +6,16 @@ object visualBatalla {
 	
 	method dibujarVisualBatalla(pok1, pok2) {
 	
+		// fondo	
 		game.ground("fondoBatalla.png")
-		game.addVisualIn(ataque1, game.at(1,1))
-		game.addVisualIn(ataque2, game.at(10,1))
-		game.addVisualIn(baseAsh, game.at(2,5))
-		game.addVisualIn(baseRival, game.at(18,10))
-		game.addVisualIn(pok1, game.at(3,5))
-		game.addVisualIn(pok2, game.at(22,11))
+		game.addVisualIn(pelea, game.at(5,1))
+		
+		// agregados pelea
+		game.addVisualIn(pok1, game.at(6,5))
+		game.addVisualIn(pok2, game.at(18,8))		
+		game.addVisualIn(ataque1, game.at(8,1))
+		game.addVisualIn(ataque2, game.at(17,1))
+
 	}
 }
 
@@ -32,12 +35,7 @@ object ataque2 {
 	method image() = "atacar.png" //Cambiar esta Imagen por la del nombre del ataque.
 }
 
-object baseAsh {
+object pelea {
 	
-	method image() = "basePeleaAsh.png"
-}
-
-object baseRival {
-	
-	method image() = "basePeleaRival.png"
+	method image() = "pelea.png"
 }
