@@ -11,8 +11,7 @@ program Pokemon {
 	game.title("Pokemon")
 	game.height(16)
 	game.width(31)
-	mapa.dibujarMapa()
-	
+
 	// Inicializaciones y Valores Principales.
 	
 	// Debilidades
@@ -29,49 +28,41 @@ program Pokemon {
 	// Movimientos.
 	charmander.aprenderMovimiento(ascuas)
 	charmander.aprenderMovimiento(araniazo)
+	
 	charmeleon.aprenderMovimiento(pirotecnia)
 	charmeleon.aprenderMovimiento(cuchillada)
+	
 	charizard.aprenderMovimiento(lanzallamas)
 	charizard.aprenderMovimiento(tajoAereo)
 	
+	megaCharizard.aprenderMovimiento(lanzallamas)
+	megaCharizard.aprenderMovimiento(tajoAereo)
+	
 	bulbasaur.aprenderMovimiento(latigoCepa)
 	bulbasaur.aprenderMovimiento(placaje)
+	
 	ivysaur.aprenderMovimiento(hojaAfilada)
 	ivysaur.aprenderMovimiento(cargaToxica)
+	
 	venasaur.aprenderMovimiento(rayoSolar)
 	venasaur.aprenderMovimiento(bombaLodo)
 	
 	squirtle.aprenderMovimiento(pistolaAgua)
 	squirtle.aprenderMovimiento(placaje)
+	
 	wartortle.aprenderMovimiento(rayoBurbuja)
 	wartortle.aprenderMovimiento(mordisco)
+	
 	blastoise.aprenderMovimiento(hidroBomba)
 	blastoise.aprenderMovimiento(triturar)
 	
 	mewtwo.aprenderMovimiento(psiquico)
 	mewtwo.aprenderMovimiento(concentrar)
 	
-	// Entrenador 
-	const ash1 = new Entrenador()
-	game.addVisual(ash1)	
-	ash1.pokemon(charmander)
-	
-	//No se puede usar metodo addVisualCharacter porque sino no hay manera de recordar la lastPosition.
-	keyboard.up().onPressDo { ash1.move(ash1.position().up(1)) }
-	keyboard.down().onPressDo { ash1.move(ash1.position().down(1)) }
-	keyboard.left().onPressDo { ash1.move(ash1.position().left(1)) }
-	keyboard.right().onPressDo { ash1.move(ash1.position().right(1)) }
+	ash.pokemon(charmander)
 	
 	//Visuals
-	game.addVisualIn(bulbasaur, game.at(5.randomUpTo(10).truncate(0), 1.randomUpTo(9).truncate(0)))	
-	game.addVisualIn(squirtle, game.at(5.randomUpTo(10).truncate(0), 1.randomUpTo(9).truncate(0)))
-	game.addVisualIn(ivysaur, game.at(12.randomUpTo(29).truncate(0), 1.randomUpTo(3).truncate(0)))
-	game.addVisualIn(wartortle, game.at(12.randomUpTo(29).truncate(0), 1.randomUpTo(3).truncate(0)))
-	game.addVisualIn(venasaur, game.at(16.randomUpTo(25).truncate(0), 11.randomUpTo(14).truncate(0)))
-	game.addVisualIn(blastoise, game.at(16.randomUpTo(25).truncate(0), 11.randomUpTo(14).truncate(0)))
-	
-	//Colisiones
-	game.whenCollideDo (ash1, { entidad => entidad.colisionasteCon(ash1) })
+	mapa.dibujarMapa()
 	
 	game.start()
 }

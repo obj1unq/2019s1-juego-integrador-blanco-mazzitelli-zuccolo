@@ -5,8 +5,11 @@ import wollok.game.*
 //Ataques de la linea de Charmander.
 //Charmander:
 object ascuas {
-	const potencia = 40
+	const potencia = 20
 	const tipo = fuego
+//	const imagen = "Screenshot_3.png"
+	
+//	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -23,8 +26,11 @@ object ascuas {
 } 
 
 object araniazo {
-	const potencia = 40
+	const potencia = 20
 	const tipo = normal
+//	const imagen = "Screenshot_3.png"
+	
+//	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -63,7 +69,7 @@ object cuchillada {
 
 //Charizard: 
 object lanzallamas {
-	const potencia = 95
+	const potencia = 110
 	const tipo = fuego
 	
 	method potenciaDelAtaque() = potencia
@@ -81,7 +87,7 @@ object lanzallamas {
 }
 
 object tajoAereo {
-	var potencia = 75
+	var potencia = 80
 	const tipo = volador
 	
 	method potenciaDelAtaque() = potencia
@@ -93,7 +99,7 @@ object tajoAereo {
 //Ataques de la linea de Bulbasaur.
 //Bulbasaur:
 object latigoCepa {
-	const potencia = 40
+	const potencia = 20
 	const tipo = planta
 	
 	method potenciaDelAtaque() = potencia
@@ -103,7 +109,7 @@ object latigoCepa {
 }
 
 object placaje {
-	const potencia = 40
+	const potencia = 20
 	const tipo = normal
 	
 	method potenciaDelAtaque() = potencia
@@ -173,7 +179,7 @@ object bombaLodo {
 //Ataques de la linea de Squirtle-
 //Squirtle: (+ placaje)
 object pistolaAgua {
-	const potencia = 40
+	const potencia = 20
 	const tipo = agua
 	
 	method potenciaDelAtaque() = potencia
@@ -216,7 +222,7 @@ object hidroBomba {
 }
 
 object triturar {
-	const potencia = 80
+	const potencia = 100
 	const tipo = siniestro
 	
 	method potenciaDelAtaque() = potencia
@@ -227,7 +233,7 @@ object triturar {
 
 //Boss:
 object psiquico {
-	const potencia = 90
+	const potencia = 100
 	const tipo = psiquico 
 	
 	method potenciaDelAtaque() = potencia

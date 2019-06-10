@@ -88,11 +88,36 @@ object mapa {
 		game.addVisualIn(fence27, game.at(22,10))
 		game.addVisualIn(fence28, game.at(23,10))
 		game.addVisualIn(fence29, game.at(24,10))
-		game.addVisualIn(fence30, game.at(25,10))
+		game.addVisualIn(fence30, game.at(25,10))		
+
 		
 		// Batalla Final
 		
-		game.addVisualIn(batallaFinal, game.at(27,13))		 
+		game.addVisualIn(batallaFinal, game.at(27,13))
+		
+		//Hospital
+		
+		game.addVisualIn(hospital, game.at(1,14))		 
+		
+		// Pokemon 
+		
+		game.addVisualIn(bulbasaur, game.at(5.randomUpTo(10).truncate(0), 1.randomUpTo(9).truncate(0)))	
+		game.addVisualIn(squirtle, game.at(5.randomUpTo(10).truncate(0), 1.randomUpTo(9).truncate(0)))
+		game.addVisualIn(ivysaur, game.at(12.randomUpTo(29).truncate(0), 1.randomUpTo(3).truncate(0)))
+		game.addVisualIn(wartortle, game.at(12.randomUpTo(29).truncate(0), 1.randomUpTo(3).truncate(0)))
+		game.addVisualIn(venasaur, game.at(16.randomUpTo(25).truncate(0), 11.randomUpTo(14).truncate(0)))
+		game.addVisualIn(blastoise, game.at(16.randomUpTo(25).truncate(0), 11.randomUpTo(14).truncate(0)))
+		
+		game.addVisual(ash)
+		
+		//No se puede usar metodo addVisualCharacter porque sino no hay manera de recordar la lastPosition.
+		keyboard.up().onPressDo { ash.move(ash.position().up(1)) }
+		keyboard.down().onPressDo { ash.move(ash.position().down(1)) }
+		keyboard.left().onPressDo { ash.move(ash.position().left(1)) }
+		keyboard.right().onPressDo { ash.move(ash.position().right(1)) }
+		
+		//Colisiones
+		game.whenCollideDo (ash, { entidad => entidad.colisionasteCon(ash) })
 	}
 }
 
@@ -102,6 +127,15 @@ class Fence {
 	
 	method colisionasteCon(entrenador) {
 		entrenador.stop()
+	}
+}
+
+object hospital {
+	
+	method image() = "fence.png"
+	
+	method colisionasteCon(entrenador) {
+		entrenador.pokemon().vidaActual(entrenador.pokemon().vida() + 40)
 	}
 }
 

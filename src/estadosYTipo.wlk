@@ -23,6 +23,7 @@ class Tipo {
 	const debilidades = []
 	
 	method agregarDebilidad(debilidad) = debilidades.add(debilidad)
+	method listaDeDebilidades() = debilidades
 }
 
 const planta = new Tipo()
