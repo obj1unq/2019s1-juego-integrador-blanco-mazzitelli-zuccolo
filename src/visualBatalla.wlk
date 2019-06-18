@@ -11,10 +11,10 @@ object visualBatalla {
 		game.ground("fondoBatalla.png")
 		game.addVisualIn(pelea, game.at(5, 1))
 		// Agregados pelea
-		game.addVisualIn(pok1, game.at(6, 5))
-		game.addVisualIn(pok2, game.at(18, 8))
-		game.addVisualIn(movimientoPrincipal, game.at(8, 2))
-		game.addVisualIn(movimientoSecundario, game.at(17, 2))
+		game.addVisualIn(pok1, game.at(7, 5))
+		game.addVisualIn(pok2, game.at(18, 10))
+		game.addVisualIn(movimientoPrincipal, game.at(8, 1))
+		game.addVisualIn(movimientoSecundario, game.at(17, 1))
 		
 		keyboard.a().onPressDo {
 			ash.ultimoPokemonColisionado().recibirAtaque(ash.pokemon().listaDeMovimientos().head(), ash.pokemon())
@@ -36,7 +36,7 @@ object visualBatalla {
 //El problema principal es que no me esta dejando importar el program.wpgm, sino directamente le preguntamos el pokemon a ash1 y listo, pero no me dejo.
 object movimientoPrincipal {
 
-	var property imagen = "atacar.png"
+	var property imagen = ash.pokemon().listaDeMovimientos().head().image()
 
 	method image() = imagen // Cambiar esta Imagen por la del nombre del ataque.
 
@@ -47,7 +47,7 @@ object movimientoPrincipal {
 
 object movimientoSecundario {
 	
-	var property imagen = "atacar.png"
+	var property imagen = ash.pokemon().listaDeMovimientos().last().image()
 	
 	method image() = imagen
 	

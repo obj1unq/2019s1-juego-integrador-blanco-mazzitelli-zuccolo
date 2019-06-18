@@ -97,7 +97,7 @@ object mapa {
 		
 		//Hospital
 		
-		game.addVisualIn(hospital, game.at(1,14))		 
+		game.addVisualIn(hospital, game.at(1,11))		 
 		
 		// Pokemon 
 		
@@ -107,6 +107,8 @@ object mapa {
 		game.addVisualIn(wartortle, game.at(12.randomUpTo(29).truncate(0), 1.randomUpTo(3).truncate(0)))
 		game.addVisualIn(venasaur, game.at(16.randomUpTo(25).truncate(0), 11.randomUpTo(14).truncate(0)))
 		game.addVisualIn(blastoise, game.at(16.randomUpTo(25).truncate(0), 11.randomUpTo(14).truncate(0)))
+		mewtwo.cambiarImage("sueloArena.png")
+		game.addVisualIn(mewtwo, game.at(28,13))
 		
 		game.addVisual(ash)
 		
@@ -132,7 +134,7 @@ class Fence {
 
 object hospital {
 	
-	method image() = "fence.png"
+	method image() = "centroPokemon.png"
 	
 	method colisionasteCon(entrenador) {
 		entrenador.pokemon().vidaActual(entrenador.pokemon().vida() + 40)

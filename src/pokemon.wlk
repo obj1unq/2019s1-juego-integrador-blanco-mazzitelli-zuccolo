@@ -15,7 +15,7 @@ class Pokemon {
 	var property defensa
 	var property estado = natural
 	const estadoEvolutivo
-	const movimientos = []
+	var property movimientos = []
 	
 	//IMAGENES
 	var image = "pasto.png"
@@ -30,10 +30,13 @@ class Pokemon {
       	ataque = _ataque
       	defensa = _defensa
       	estadoEvolutivo = _estadoEvolutivo
+      	
+      	
  	}	
-	
+ 	method cambiarImage(image_){image = image_}
+ 	method movimientos() {return movimientos}
 	method tipo() = tipo
-	method image() = image
+	method image() = image2
 	method listaDeMovimientos() = movimientos
 	method estadoEvolutivo() = estadoEvolutivo
 	
@@ -53,7 +56,7 @@ class Pokemon {
 	method finalizarBatalla(pokemon) {
 		game.clear()
 		if (ash.pokemon() == self) {
-			ash.position(game.at(1, 14))
+			ash.position(game.at(3, 12))
 		}
 		ash.ultimoPokemonColisionado().revertirImagen()
 		mapa.dibujarMapa()
@@ -104,6 +107,7 @@ class Pokemon {
 		self.cambiarImagen()
 	}
 }
+
 
 object ash {
 	

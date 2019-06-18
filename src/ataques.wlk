@@ -7,9 +7,9 @@ import wollok.game.*
 object ascuas {
 	const potencia = 20
 	const tipo = fuego
-//	const imagen = "Screenshot_3.png"
+	const imagen = "ascuas.png"
 	
-//	method image() = imagen
+	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -28,9 +28,9 @@ object ascuas {
 object araniazo {
 	const potencia = 20
 	const tipo = normal
-//	const imagen = "Screenshot_3.png"
+	const imagen = "araniazo.png"
 	
-//	method image() = imagen
+	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -42,6 +42,9 @@ object araniazo {
 object pirotecnia {
 	const potencia = 60
 	const tipo = fuego
+	const imagen = "pirotecnia.png"
+	
+	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -60,6 +63,9 @@ object pirotecnia {
 object cuchillada {
 	var potencia = 70
 	const tipo = normal
+	const imagen = "cuchillada.png"
+	
+	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -71,6 +77,9 @@ object cuchillada {
 object lanzallamas {
 	const potencia = 110
 	const tipo = fuego
+	const imagen = "lanzallamas.png"
+	
+	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -89,6 +98,9 @@ object lanzallamas {
 object tajoAereo {
 	var potencia = 80
 	const tipo = volador
+	const imagen = "tajoAereo.png"
+	
+	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -101,6 +113,10 @@ object tajoAereo {
 object latigoCepa {
 	const potencia = 20
 	const tipo = planta
+	const imagen = "latigoCepa.png"
+	
+	method image() = imagen
+	
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -111,6 +127,9 @@ object latigoCepa {
 object placaje {
 	const potencia = 20
 	const tipo = normal
+	const imagen = "placaje.png"
+	
+	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -122,6 +141,9 @@ object placaje {
 object hojaAfilada {
 	var potencia = 70
 	const tipo = planta
+	const imagen = "hojaAfilada.png"
+	
+	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -132,6 +154,9 @@ object hojaAfilada {
 object cargaToxica {
 	const potencia = 65
 	const tipo = veneno
+	const imagen = "cargaToxica.png"
+	
+	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -151,6 +176,9 @@ object cargaToxica {
 object rayoSolar {
 	const potencia = 120
 	const tipo = planta
+	const imagen = "rayoSolar.png"
+	
+	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -161,6 +189,9 @@ object rayoSolar {
 object bombaLodo {
 	const potencia = 90
 	const tipo = veneno
+	const imagen = "bombaLodo.png"
+	
+	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -181,6 +212,9 @@ object bombaLodo {
 object pistolaAgua {
 	const potencia = 20
 	const tipo = agua
+	const imagen = "pistolaAgua.png"
+	
+	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -192,6 +226,9 @@ object pistolaAgua {
 object rayoBurbuja {
 	const potencia = 60
 	const tipo = agua
+	const imagen = "rayoBurbuja.png"
+	
+	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -203,6 +240,9 @@ object rayoBurbuja {
 object mordisco {
 	const potencia = 60
 	const tipo = siniestro
+	const imagen = "mordisco.png"
+	
+	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -214,6 +254,9 @@ object mordisco {
 object hidroBomba {
 	const potencia = 120
 	const tipo = agua
+	const imagen = "hidroBomba.png"
+	
+	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -224,6 +267,9 @@ object hidroBomba {
 object triturar {
 	const potencia = 100
 	const tipo = siniestro
+	const imagen = "triturar.png"
+	
+	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -235,6 +281,9 @@ object triturar {
 object psiquico {
 	const potencia = 100
 	const tipo = psiquico 
+	const imagen = "psiquico.png"
+	
+	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
@@ -246,6 +295,9 @@ object psiquico {
 object concentrar {
 	const potencia = 40
 	const tipo = psiquico
+	const imagen = "concentrar.png"
+	
+	method image() = imagen
 	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
