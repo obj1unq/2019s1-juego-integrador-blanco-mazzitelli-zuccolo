@@ -13,26 +13,24 @@ object visualBatalla {
 		// Agregados pelea
 		game.addVisualIn(pok1, game.at(7, 5))
 		game.addVisualIn(pok2, game.at(18, 10))
-	//	game.addVisualIn(pok1.barraDeVida(), game.at(16, 5))
+		//game.addVisualIn(pok1.barraDeVida(), game.at(16, 5))
 		movimientoPrincipal.imagen(ash.pokemon().listaDeMovimientos().head().image())
 		movimientoSecundario.imagen(ash.pokemon().listaDeMovimientos().last().image())
 		game.addVisualIn(movimientoPrincipal, game.at(8, 1))
 		game.addVisualIn(movimientoSecundario, game.at(17, 1))
 		
 		keyboard.a().onPressDo {
-			game.say(pok1, ash.pokemon().listaDeMovimientos().head().nombre())
+			game.say(pok1, ash.pokemon().listaDeMovimientos().head().nombre() + ". Mi vida es " + ash.pokemon().vidaActual())
 			ash.ultimoPokemonColisionado().recibirAtaque(ash.pokemon().listaDeMovimientos().head(), ash.pokemon())
 			ash.pokemon().recibirAtaque(ash.ultimoPokemonColisionado().elegirMovimientoDeCombate(), ash.ultimoPokemonColisionado())
 		}
 		
 		keyboard.s().onPressDo {
-			game.say(pok1, ash.pokemon().listaDeMovimientos().last().nombre())
+			game.say(pok1, ash.pokemon().listaDeMovimientos().last().nombre() + ". Mi vida es " + ash.pokemon().vidaActual())
 			ash.ultimoPokemonColisionado().recibirAtaque(ash.pokemon().listaDeMovimientos().last(), ash.pokemon())
 			ash.pokemon().recibirAtaque(ash.ultimoPokemonColisionado().elegirMovimientoDeCombate(), ash.ultimoPokemonColisionado())
-		}
-	
+		}	
 	}
-
 }
 
 //Para los ataques, hay que buscar la forma de que cuando tenemos a charmander las imagenes sean de los ataques de charmander, y asi con sus evoluciones.

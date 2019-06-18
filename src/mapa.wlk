@@ -7,7 +7,7 @@ object mapa {
 	method dibujarMapa() {
 		
 		game.ground("suelo.png")
-//		game.sound("battle.mp3")
+		//game.sound("main.mp3")
 		
 		// Camino
 		
@@ -119,6 +119,8 @@ object mapa {
 		keyboard.left().onPressDo { ash.move(ash.position().left(1)) }
 		keyboard.right().onPressDo { ash.move(ash.position().right(1)) }
 		
+		keyboard.q().onPressDo { game.say(ash, "¡" + ash.pokemon().nombre() + " yo te elijo!!. " + "Estas a: " + ash.pokemon().vidaActual())}
+		
 		//Colisiones
 		game.whenCollideDo (ash, { entidad => entidad.colisionasteCon(ash) })
 	}
@@ -139,6 +141,7 @@ object hospital {
 	
 	method colisionasteCon(entrenador) {
 		entrenador.pokemon().vidaActual(entrenador.pokemon().vida() + 40)
+		game.say(self, "Curamos a tu Pokemon para que continue su aventura")
 	}
 }
 

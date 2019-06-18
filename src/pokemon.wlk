@@ -16,6 +16,7 @@ class Pokemon {
 	var property estado = natural
 	const estadoEvolutivo
 	var property movimientos = []
+	const nombre
 	
 	//IMAGENES
 	var image = "pasto.png"
@@ -23,7 +24,7 @@ class Pokemon {
 	const image2
 	var property barraDeVida = barraVerde
 	
-	constructor(_image, _tipo, _vida, _vidaActual, _ataque, _defensa, _estadoEvolutivo) {
+	constructor(_image, _tipo, _vida, _vidaActual, _ataque, _defensa, _estadoEvolutivo, _nombre) {
       	image2 = _image
       	tipo = _tipo
       	vida = _vida
@@ -31,6 +32,7 @@ class Pokemon {
       	ataque = _ataque
       	defensa = _defensa
       	estadoEvolutivo = _estadoEvolutivo
+      	nombre = _nombre
  	}	
  	
  	method cambiarImage(image_){image = image_}
@@ -39,14 +41,15 @@ class Pokemon {
 	method image() = image2
 	method listaDeMovimientos() = movimientos
 	method estadoEvolutivo() = estadoEvolutivo
+	method nombre() = nombre
 	
 	method cambiarImagen() { image = image2 }
 	method revertirImagen() { image = revertirImage }
 	method aprenderMovimiento(movimiento) { movimientos.add(movimiento) }
 	
 	method cambioDeBarra() {
-		if(self.vida() < self.calculoDePorcentajeVida(25)) { self.barraDeVida(barraRoja) }
-		else if(self.vida() < self.calculoDePorcentajeVida(50)) { self.barraDeVida(barraAmarilla) }
+		if(self.vidaActual() < self.calculoDePorcentajeVida(25)) { self.barraDeVida(barraRoja) }
+		else if(self.vidaActual() < self.calculoDePorcentajeVida(50)) { self.barraDeVida(barraAmarilla) }
 	} 
 
 	method calculoDePorcentajeVida(p) = (p * self.vida()) / 100 
@@ -56,15 +59,15 @@ class Pokemon {
 	
 	method recibirAtaque(movimiento, pokemonAtacante) {
 		self.calculoDeDanio(movimiento, pokemonAtacante)
-	//	self.cambiarBarraDeVida()
-	//	self.aplicarEfectoSecundario(movimiento)
+		//self.aplicarEfectoSecundario(movimiento)
 		if (self.vidaActual() <= 0) { self.finalizarBatalla(pokemonAtacante) }
+		//else { self.cambiarBarraDeVida() }
 	}
 	
 	method finalizarBatalla(pokemon) {
 		game.clear()
 		if (ash.pokemon() == self) {
-			ash.position(game.at(3, 12))
+			ash.position(game.at(1, 11))
 		}
 		ash.ultimoPokemonColisionado().revertirImagen()
 		mapa.dibujarMapa()
@@ -116,7 +119,6 @@ class Pokemon {
 	method cambioDeImagenes(entrenador) {
 		game.clear()
 		self.cambiarImagenesAPokemon(entrenador)
-		visualBatalla.dibujarVisualBatalla(entrenador.pokemon(), self)
 	}
 	
 	method cambiarImagenesAPokemon(entrenador) {
