@@ -13,6 +13,7 @@ object visualBatalla {
 		// Agregados pelea
 		game.addVisualIn(pok1, game.at(7, 5))
 		game.addVisualIn(pok2, game.at(18, 10))
+	//	game.addVisualIn(pok1.barraDeVida(), game.at(16, 5))
 		movimientoPrincipal.imagen(ash.pokemon().listaDeMovimientos().head().image())
 		movimientoSecundario.imagen(ash.pokemon().listaDeMovimientos().last().image())
 		game.addVisualIn(movimientoPrincipal, game.at(8, 1))

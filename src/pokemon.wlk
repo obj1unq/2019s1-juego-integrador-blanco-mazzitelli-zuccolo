@@ -21,6 +21,7 @@ class Pokemon {
 	var image = "pasto.png"
 	var revertirImage = image
 	const image2
+	var property barraDeVida = barraVerde
 	
 	constructor(_image, _tipo, _vida, _vidaActual, _ataque, _defensa, _estadoEvolutivo) {
       	image2 = _image
@@ -30,9 +31,8 @@ class Pokemon {
       	ataque = _ataque
       	defensa = _defensa
       	estadoEvolutivo = _estadoEvolutivo
-      	
-      	
  	}	
+ 	
  	method cambiarImage(image_){image = image_}
  	method movimientos() {return movimientos}
 	method tipo() = tipo
@@ -44,11 +44,19 @@ class Pokemon {
 	method revertirImagen() { image = revertirImage }
 	method aprenderMovimiento(movimiento) { movimientos.add(movimiento) }
 	
+	method cambioDeBarra() {
+		if(self.vida() < self.calculoDePorcentajeVida(25)) { self.barraDeVida(barraRoja) }
+		else if(self.vida() < self.calculoDePorcentajeVida(50)) { self.barraDeVida(barraAmarilla) }
+	} 
+
+	method calculoDePorcentajeVida(p) = (p * self.vida()) / 100 
+	
 	//Actions
 	method elegirMovimientoDeCombate() = self.listaDeMovimientos().anyOne()
 	
 	method recibirAtaque(movimiento, pokemonAtacante) {
 		self.calculoDeDanio(movimiento, pokemonAtacante)
+	//	self.cambiarBarraDeVida()
 	//	self.aplicarEfectoSecundario(movimiento)
 		if (self.vidaActual() <= 0) { self.finalizarBatalla(pokemonAtacante) }
 	}
@@ -78,6 +86,15 @@ class Pokemon {
 	
 	method calculoDeDanio(movimiento, pokemonAtacante) {
 		vidaActual -= ( (self.danioTotal(movimiento, pokemonAtacante)) - self.defensa() )
+	}
+	
+	method cambiarBarraDeVida() {
+		self.cambioDeBarra()
+		self.reemplazarBarra()
+	}
+	
+	method reemplazarBarra() {
+		game.addVisualIn(self.barraDeVida(), game.at(16,5))
 	}
 	
 	method danioTotal(movimiento, pokemonAtacante) = 
@@ -133,4 +150,17 @@ object ash {
 		if (self.pokemon().estadoEvolutivo() == 1) { nivel1 }
 		else if (self.pokemon().estadoEvolutivo() == 2) { nivel2 }
 		else { nivel3 }
+}
+
+object barraVerde {
+	method image() = "barraVerde.png"
+}
+
+object barraAmarilla {
+	method image() = "barraAmarilla.png"
+	
+}
+
+object barraRoja {
+	method image() = "barraRoja.png"
 }

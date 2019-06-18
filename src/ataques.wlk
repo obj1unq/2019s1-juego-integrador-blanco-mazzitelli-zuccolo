@@ -2,20 +2,24 @@ import pokemon.*
 import estadosYTipo.*
 import wollok.game.*
 
-//Ataques de la linea de Charmander.
-//Charmander:
-object ascuas {
-	const potencia = 20
-	const tipo = fuego
-	const imagen = "ascuas.png"
-	var property nombre = "Ascuas"
+
+class Movimiento {
+	const potencia
+	const tipo
+	const imagen
+	var property nombre
 	
 	method image() = imagen
-	
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
 	
-	method efectoSecundario(pokemon) {
+	method efectoSecundario(pokemon) 
+}
+
+//Ataques de la linea de Charmander.
+//Charmander:
+class Ascuas inherits Movimiento{
+	override method efectoSecundario(pokemon) {
 		if(pokemon.estado() == natural) { self.intentarQuemar(pokemon) }
 		else { game.say(self, "¡El estado de" + pokemon + "ya esta alterado!") }
 	}
@@ -26,33 +30,13 @@ object ascuas {
 	}
 } 
 
-object araniazo {
-	const potencia = 20
-	const tipo = normal
-	const imagen = "araniazo.png"
-	var property nombre = "Arañazo"
-	
-	method image() = imagen
-	
-	method potenciaDelAtaque() = potencia
-	method tipoDelAtaque() = tipo
-	
-	method efectoSecundario(pokemon) {  }
+class Araniazo inherits Movimiento {	
+	override method efectoSecundario(pokemon) {  }
 }
 
 //Charmeleon:
-object pirotecnia {
-	const potencia = 60
-	const tipo = fuego
-	const imagen = "pirotecnia.png"
-	var property nombre = "Pirotecnia"
-	
-	method image() = imagen
-	
-	method potenciaDelAtaque() = potencia
-	method tipoDelAtaque() = tipo
-	
-	method efectoSecundario(pokemon) {
+class Pirotecnia inherits Movimiento {
+	override method efectoSecundario(pokemon) {
 		if(pokemon.estado() == natural) { self.intentarQuemar(pokemon) }
 		else { game.say(self, "¡El estado de" + pokemon + "ya esta alterado!") }
 	}
@@ -63,33 +47,13 @@ object pirotecnia {
 	}
 }
 
-object cuchillada {
-	var potencia = 70
-	const tipo = normal
-	const imagen = "cuchillada.png"
-	var property nombre = "Cuchillada"
-	
-	method image() = imagen
-	
-	method potenciaDelAtaque() = potencia
-	method tipoDelAtaque() = tipo
-	
-	method efectoSecundario(pokemon) { if(0.randomUpTo(100) <= 30) { potencia = potencia*2 } else { } }
+class Cuchillada inherits Movimiento{
+	override method efectoSecundario(pokemon) { }
 }
 
 //Charizard: 
-object lanzallamas {
-	const potencia = 110
-	const tipo = fuego
-	const imagen = "lanzallamas.png"
-	var property nombre = "Lanzallamas"
-	
-	method image() = imagen
-	
-	method potenciaDelAtaque() = potencia
-	method tipoDelAtaque() = tipo
-	
-	method efectoSecundario(pokemon) {
+class Lanzallamas inherits Movimiento {
+	override method efectoSecundario(pokemon) {
 		if(pokemon.estado() == natural) { self.intentarQuemar(pokemon) }
 		else { game.say(self, "¡El estado de" + pokemon + "ya esta alterado!") }
 	}
@@ -100,78 +64,34 @@ object lanzallamas {
 	}
 }
 
-object tajoAereo {
-	var potencia = 80
-	const tipo = volador
-	const imagen = "tajoAereo.png"
-	var property nombre = "Tajo Aéreo"
-	
-	method image() = imagen
-	
-	method potenciaDelAtaque() = potencia
-	method tipoDelAtaque() = tipo
-	
-	method efectoSecundario(pokemon) { if(0.randomUpTo(100) <= 30) { potencia = potencia*2 } else { } }
+class TajoAereo inherits Movimiento{
+	override method efectoSecundario(pokemon) { }
 }
+
+const ascuas = new Ascuas(potencia = 20, tipo = fuego, imagen = "ascuas.png", nombre = "Ascuas")
+const araniazo = new Araniazo(potencia = 20, tipo = normal, imagen = "araniazo.png", nombre = "Arañazo")
+const pirotecnia = new Pirotecnia(potencia = 60, tipo = fuego, imagen = "pirotecnia.png", nombre = "Pirotecnia")
+const cuchillada = new Cuchillada(potencia = 70, tipo = normal, imagen = "cuchillada.png", nombre = "Cuchillada")
+const lanzallamas = new Lanzallamas(potencia = 110, tipo = fuego, imagen = "lanzallamas.png", nombre = "Lanzallamas")
+const tajoAereo = new TajoAereo(potencia = 80, tipo = volador, imagen = "tajoAereo.png", nombre = "Tajo Aéreo")
 
 //Ataques de la linea de Bulbasaur.
 //Bulbasaur:
-object latigoCepa {
-	const potencia = 20
-	const tipo = planta
-	const imagen = "latigoCepa.png"
-	var property nombre = "Latigo Cepa"
-	
-	method image() = imagen
-	
-	
-	method potenciaDelAtaque() = potencia
-	method tipoDelAtaque() = tipo
-	
-	method efectoSecundario(pokemon) {  }
+class LatigoCepa inherits Movimiento {
+	override method efectoSecundario(pokemon) {  }
 }
 
-object placaje {
-	const potencia = 20
-	const tipo = normal
-	const imagen = "placaje.png"
-	var property nombre = "Placaje"
-	
-	method image() = imagen
-	
-	method potenciaDelAtaque() = potencia
-	method tipoDelAtaque() = tipo
-	
-	method efectoSecundario(pokemon) {  }
+class Placaje inherits Movimiento {
+	override method efectoSecundario(pokemon) {  }
 }
 
 //Ivysaur:
-object hojaAfilada {
-	var potencia = 70
-	const tipo = planta
-	const imagen = "hojaAfilada.png"
-	var property nombre = "Hoja Afilada"
-	
-	method image() = imagen
-	
-	method potenciaDelAtaque() = potencia
-	method tipoDelAtaque() = tipo
-	
-	method efectoSecundario(pokemon) { if(0.randomUpTo(100) <= 30) { potencia = potencia*2 } else { } }
+class HojaAfilada inherits Movimiento{
+	override method efectoSecundario(pokemon) { }
 }
 
-object cargaToxica {
-	const potencia = 65
-	const tipo = veneno
-	const imagen = "cargaToxica.png"
-	var property nombre = "Carga Tóxica"
-	
-	method image() = imagen
-	
-	method potenciaDelAtaque() = potencia
-	method tipoDelAtaque() = tipo
-	
-	method efectoSecundario(pokemon) {
+class CargaToxica inherits Movimiento {
+	override method efectoSecundario(pokemon) {
 		if(pokemon.estado() == natural) { self.intentarEnvenenar(pokemon) }
 		else { game.say(self, "¡El estado de" + pokemon + "ya esta alterado!") }
 	}
@@ -183,32 +103,12 @@ object cargaToxica {
 }
 
 //Venusaur:
-object rayoSolar {
-	const potencia = 120
-	const tipo = planta
-	const imagen = "rayoSolar.png"
-	var property nombre = "Rayo Solar"
-	
-	method image() = imagen
-	
-	method potenciaDelAtaque() = potencia
-	method tipoDelAtaque() = tipo
-	
-	method efectoSecundario(pokemon) {  }
+class RayoSolar inherits Movimiento {
+	override method efectoSecundario(pokemon) {  }
 }
 
-object bombaLodo {
-	const potencia = 90
-	const tipo = veneno
-	const imagen = "bombaLodo.png"
-	var property nombre = "Bomba Lodo"
-	
-	method image() = imagen
-	
-	method potenciaDelAtaque() = potencia
-	method tipoDelAtaque() = tipo
-	
-	method efectoSecundario(pokemon) {
+class BombaLodo inherits Movimiento {
+	override method efectoSecundario(pokemon) {
 		if(pokemon.estado() == natural) { self.intentarEnvenenar(pokemon) }
 		else { game.say(self, "¡El estado de" + pokemon + "ya esta alterado!") }
 	}
@@ -219,111 +119,57 @@ object bombaLodo {
 	}
 }
 
+const latigoCepa = new LatigoCepa(potencia = 20, tipo = planta, imagen = "latigoCepa.png", nombre = "Latigo Cepa")
+const placaje = new Placaje(potencia = 20, tipo = normal, imagen = "placaje.png", nombre = "Placaje")
+const hojaAfilada = new HojaAfilada(potencia = 70, tipo = planta, imagen = "hojaAfilada.png", nombre = "Hoja Afilada")
+const cargaToxica = new CargaToxica(potencia = 65, tipo = veneno, imagen = "cargaToxica.png", nombre = "Carga Tóxica")
+const rayoSolar = new RayoSolar(potencia = 120, tipo = planta, imagen = "rayoSolar.png", nombre = "Rayo Solar")
+const bombaLodo = new BombaLodo(potencia = 95, tipo = veneno, imagen = "bombaLodo.png", nombre = "Bomba Lodo")
+
 //Ataques de la linea de Squirtle-
 //Squirtle: (+ placaje)
-object pistolaAgua {
-	const potencia = 20
-	const tipo = agua
-	const imagen = "pistolaAgua.png"
-	var property nombre = "Pistola Agua"
-	
-	method image() = imagen
-	
-	method potenciaDelAtaque() = potencia
-	method tipoDelAtaque() = tipo
-	
-	method efectoSecundario(pokemon) {  }
+class PistolaAgua inherits Movimiento {
+	override method efectoSecundario(pokemon) {  }
 }
 
 //Wartortle:
-object rayoBurbuja {
-	const potencia = 60
-	const tipo = agua
-	const imagen = "rayoBurbuja.png"
-	var property nombre = "Rayoburbuja"
-	
-	method image() = imagen
-	
-	method potenciaDelAtaque() = potencia
-	method tipoDelAtaque() = tipo
-	
-	method efectoSecundario(pokemon) { if(0.randomUpTo(100) <= 30) { pokemon.velocidad(self.diezPorcientoDe(pokemon)) } else { } }
+class RayoBurbuja inherits Movimiento {
+	override method efectoSecundario(pokemon) { if(0.randomUpTo(100) <= 30) { pokemon.velocidad(self.diezPorcientoDe(pokemon)) } else { } }
 	method diezPorcientoDe(pokemon) = ( pokemon.velocidad() * 90 ) / 100
 }
 
-object mordisco {
-	const potencia = 60
-	const tipo = siniestro
-	const imagen = "mordisco.png"
-	var property nombre = "Mordisco"
-	
-	method image() = imagen
-	
-	method potenciaDelAtaque() = potencia
-	method tipoDelAtaque() = tipo
-	
-	method efectoSecundario(pokemon) {  }
+class Mordisco inherits Movimiento {
+	override method efectoSecundario(pokemon) {  }
 }
 
 //Blastoise:
-object hidroBomba {
-	const potencia = 120
-	const tipo = agua
-	const imagen = "hidroBomba.png"
-	var property nombre = "Hidrobomba"
-	
-	method image() = imagen
-	
-	method potenciaDelAtaque() = potencia
-	method tipoDelAtaque() = tipo
-	
-	method efectoSecundario(pokemon) {  }
+class HidroBomba inherits Movimiento {
+	override method efectoSecundario(pokemon) {  }
 }
 
-object triturar {
-	const potencia = 100
-	const tipo = siniestro
-	const imagen = "triturar.png"
-	var property nombre = "Triturar"
-	
-	method image() = imagen
-	
-	method potenciaDelAtaque() = potencia
-	method tipoDelAtaque() = tipo
-	
-	method efectoSecundario(pokemon) {  }
+class Triturar inherits Movimiento {
+	override method efectoSecundario(pokemon) {  }
 }
+
+const pistolaAgua = new PistolaAgua(potencia = 20, tipo = agua, imagen = "pistolaAgua.png", nombre = "Pistola Agua")
+const rayoBurbuja = new RayoBurbuja(potencia = 60, tipo = agua, imagen = "rayoBurbuja.png", nombre = "Rayo Burbuja")
+const mordisco = new Mordisco(potencia = 60, tipo = siniestro, imagen = "mordisco.png", nombre = "Mordisco")
+const hidroBomba = new HidroBomba(potencia = 120, tipo = agua, imagen = "hidroBomba.png", nombre = "Hidrobomba")
+const triturar = new Triturar(potencia = 100, tipo = siniestro, imagen = "triturar.png", nombre = "Triturar")
 
 //Boss:
-object ondaPsiquica {
-	const potencia = 100
-	const tipo = psiquico 
-	const imagen = "psiquico.png"
-	var property nombre = "Psíquico"
-	
-	method image() = imagen
-	
-	method potenciaDelAtaque() = potencia
-	method tipoDelAtaque() = tipo
-	
-	method efectoSecundario(pokemon) { if(0.randomUpTo(100) <= 30) { pokemon.defensa(self.diezPorcientoDe(pokemon)) } else { } }
+class OndaPsiquica inherits Movimiento {
+	override method efectoSecundario(pokemon) { if(0.randomUpTo(100) <= 30) { pokemon.defensa(self.diezPorcientoDe(pokemon)) } else { } }
 	method diezPorcientoDe(pokemon) = ( pokemon.defensa() * 90 ) / 100
 }
 
-object concentrar {
-	const potencia = 40
-	const tipo = psiquico
-	const imagen = "concentrar.png"
-	var property nombre = "Concentrar"
-	
-	method image() = imagen
-	
-	method potenciaDelAtaque() = potencia
-	method tipoDelAtaque() = tipo
-	
-	method efectoSecundario(pokemon) {
+class Concentrar inherits Movimiento {
+	override method efectoSecundario(pokemon) {
 		if(0.randomUpTo(100) <= 30) { pokemon.ataque(pokemon.ataque() + self.diezPorcientoDe(pokemon)) } 
 		else { }
 	}
 	method diezPorcientoDe(pokemon) = ( pokemon.defensa() * 90 ) / 100
 }
+
+const ondaPsiquica = new OndaPsiquica(potencia = 100, tipo = psiquico, imagen = "psiquico.png", nombre = "Psíquico")
+const concentrar = new Concentrar(potencia = 40, tipo = psiquico, imagen = "concentrar.png", nombre = "Concentrar")

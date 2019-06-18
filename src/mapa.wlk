@@ -7,6 +7,7 @@ object mapa {
 	method dibujarMapa() {
 		
 		game.ground("suelo.png")
+//		game.sound("battle.mp3")
 		
 		// Camino
 		
