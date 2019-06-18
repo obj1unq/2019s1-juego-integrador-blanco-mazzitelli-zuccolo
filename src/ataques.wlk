@@ -8,6 +8,7 @@ object ascuas {
 	const potencia = 20
 	const tipo = fuego
 	const imagen = "ascuas.png"
+	var property nombre = "Ascuas"
 	
 	method image() = imagen
 	
@@ -29,6 +30,7 @@ object araniazo {
 	const potencia = 20
 	const tipo = normal
 	const imagen = "araniazo.png"
+	var property nombre = "Arañazo"
 	
 	method image() = imagen
 	
@@ -43,6 +45,7 @@ object pirotecnia {
 	const potencia = 60
 	const tipo = fuego
 	const imagen = "pirotecnia.png"
+	var property nombre = "Pirotecnia"
 	
 	method image() = imagen
 	
@@ -64,6 +67,7 @@ object cuchillada {
 	var potencia = 70
 	const tipo = normal
 	const imagen = "cuchillada.png"
+	var property nombre = "Cuchillada"
 	
 	method image() = imagen
 	
@@ -78,6 +82,7 @@ object lanzallamas {
 	const potencia = 110
 	const tipo = fuego
 	const imagen = "lanzallamas.png"
+	var property nombre = "Lanzallamas"
 	
 	method image() = imagen
 	
@@ -99,6 +104,7 @@ object tajoAereo {
 	var potencia = 80
 	const tipo = volador
 	const imagen = "tajoAereo.png"
+	var property nombre = "Tajo Aéreo"
 	
 	method image() = imagen
 	
@@ -114,6 +120,7 @@ object latigoCepa {
 	const potencia = 20
 	const tipo = planta
 	const imagen = "latigoCepa.png"
+	var property nombre = "Latigo Cepa"
 	
 	method image() = imagen
 	
@@ -128,6 +135,7 @@ object placaje {
 	const potencia = 20
 	const tipo = normal
 	const imagen = "placaje.png"
+	var property nombre = "Placaje"
 	
 	method image() = imagen
 	
@@ -142,6 +150,7 @@ object hojaAfilada {
 	var potencia = 70
 	const tipo = planta
 	const imagen = "hojaAfilada.png"
+	var property nombre = "Hoja Afilada"
 	
 	method image() = imagen
 	
@@ -155,6 +164,7 @@ object cargaToxica {
 	const potencia = 65
 	const tipo = veneno
 	const imagen = "cargaToxica.png"
+	var property nombre = "Carga Tóxica"
 	
 	method image() = imagen
 	
@@ -177,6 +187,7 @@ object rayoSolar {
 	const potencia = 120
 	const tipo = planta
 	const imagen = "rayoSolar.png"
+	var property nombre = "Rayo Solar"
 	
 	method image() = imagen
 	
@@ -190,6 +201,7 @@ object bombaLodo {
 	const potencia = 90
 	const tipo = veneno
 	const imagen = "bombaLodo.png"
+	var property nombre = "Bomba Lodo"
 	
 	method image() = imagen
 	
@@ -213,6 +225,7 @@ object pistolaAgua {
 	const potencia = 20
 	const tipo = agua
 	const imagen = "pistolaAgua.png"
+	var property nombre = "Pistola Agua"
 	
 	method image() = imagen
 	
@@ -227,6 +240,7 @@ object rayoBurbuja {
 	const potencia = 60
 	const tipo = agua
 	const imagen = "rayoBurbuja.png"
+	var property nombre = "Rayoburbuja"
 	
 	method image() = imagen
 	
@@ -241,6 +255,7 @@ object mordisco {
 	const potencia = 60
 	const tipo = siniestro
 	const imagen = "mordisco.png"
+	var property nombre = "Mordisco"
 	
 	method image() = imagen
 	
@@ -255,6 +270,7 @@ object hidroBomba {
 	const potencia = 120
 	const tipo = agua
 	const imagen = "hidroBomba.png"
+	var property nombre = "Hidrobomba"
 	
 	method image() = imagen
 	
@@ -268,6 +284,7 @@ object triturar {
 	const potencia = 100
 	const tipo = siniestro
 	const imagen = "triturar.png"
+	var property nombre = "Triturar"
 	
 	method image() = imagen
 	
@@ -278,10 +295,11 @@ object triturar {
 }
 
 //Boss:
-object psiquico {
+object ondaPsiquica {
 	const potencia = 100
 	const tipo = psiquico 
 	const imagen = "psiquico.png"
+	var property nombre = "Psíquico"
 	
 	method image() = imagen
 	
@@ -296,6 +314,7 @@ object concentrar {
 	const potencia = 40
 	const tipo = psiquico
 	const imagen = "concentrar.png"
+	var property nombre = "Concentrar"
 	
 	method image() = imagen
 	

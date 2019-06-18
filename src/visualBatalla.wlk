@@ -13,19 +13,21 @@ object visualBatalla {
 		// Agregados pelea
 		game.addVisualIn(pok1, game.at(7, 5))
 		game.addVisualIn(pok2, game.at(18, 10))
+		movimientoPrincipal.imagen(ash.pokemon().listaDeMovimientos().head().image())
+		movimientoSecundario.imagen(ash.pokemon().listaDeMovimientos().last().image())
 		game.addVisualIn(movimientoPrincipal, game.at(8, 1))
 		game.addVisualIn(movimientoSecundario, game.at(17, 1))
 		
 		keyboard.a().onPressDo {
+			game.say(pok1, ash.pokemon().listaDeMovimientos().head().nombre())
 			ash.ultimoPokemonColisionado().recibirAtaque(ash.pokemon().listaDeMovimientos().head(), ash.pokemon())
 			ash.pokemon().recibirAtaque(ash.ultimoPokemonColisionado().elegirMovimientoDeCombate(), ash.ultimoPokemonColisionado())
-//			game.say(ash.pokemon(), "Estoy usando" + ash.pokemon().listaDeMovimientos().head())
 		}
 		
 		keyboard.s().onPressDo {
+			game.say(pok1, ash.pokemon().listaDeMovimientos().last().nombre())
 			ash.ultimoPokemonColisionado().recibirAtaque(ash.pokemon().listaDeMovimientos().last(), ash.pokemon())
 			ash.pokemon().recibirAtaque(ash.ultimoPokemonColisionado().elegirMovimientoDeCombate(), ash.ultimoPokemonColisionado())
-//			game.say(ash.pokemon(), "Estoy usando" + ash.pokemon().listaDeMovimientos().last())
 		}
 	
 	}

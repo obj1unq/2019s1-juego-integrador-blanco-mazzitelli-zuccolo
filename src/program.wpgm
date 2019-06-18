@@ -56,7 +56,7 @@ program Pokemon {
 	blastoise.aprenderMovimiento(hidroBomba)
 	blastoise.aprenderMovimiento(triturar)
 	
-	mewtwo.aprenderMovimiento(psiquico)
+	mewtwo.aprenderMovimiento(ondaPsiquica)
 	mewtwo.aprenderMovimiento(concentrar)
 	
 	ash.pokemon(charmander)
