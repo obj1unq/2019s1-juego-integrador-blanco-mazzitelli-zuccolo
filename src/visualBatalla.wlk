@@ -4,11 +4,12 @@ import listaDePokemon.*
 import ataques.*
 import entrenador.*
 
-object visualBatalla {
+class VisualBatalla {
 
 	method dibujarVisualBatalla(pok1, pok2) {
-		// Fondo	
+		// Fondo
 		game.ground("fondoBatalla.png")
+		//game.sound("battle.mp3")
 		game.addVisualIn(pelea, game.at(5, 1))
 		// Agregados pelea
 		game.addVisualIn(pok1, game.at(7, 5))
@@ -32,6 +33,8 @@ object visualBatalla {
 		}	
 	}
 }
+
+const visualBatalla = new VisualBatalla()
 
 //Para los ataques, hay que buscar la forma de que cuando tenemos a charmander las imagenes sean de los ataques de charmander, y asi con sus evoluciones.
 //El problema principal es que no me esta dejando importar el program.wpgm, sino directamente le preguntamos el pokemon a ash1 y listo, pero no me dejo.
@@ -61,5 +64,9 @@ object pelea {
 
 	method image() = "pelea.png"
 
+}
+
+object imagenFinal {
+	method image() = "imagenFinal.png"	
 }
 

@@ -86,7 +86,12 @@ class Blastoise inherits Pokemon {
 }
 
 class Mewtwo inherits Pokemon {
-	
+	override method ashGanoBatalla(pokemon) {
+		if (pokemon == ash.pokemon()) {
+			game.removeVisual(self)
+			ash.esCampeon()
+		}
+	}
 }
 
 class MegaCharizard inherits Pokemon {
@@ -109,7 +114,7 @@ const venasaur = new Venasaur("venusaurRiv.png", planta, 650, 650, 100, 280, 3, 
 const blastoise = new Blastoise("blastoiseRiv.png", agua, 575, 575, 130, 320, 3, "blastoise")
 
 const megaCharizard = new MegaCharizard("charizard.png", fuego, 1000, 1000, 300, 400, 4, "megaCharizard")
-const mewtwo = new Mewtwo("mewtwo.png", psiquico, 1000, 1000, 300, 350, 4, "mewtwo")
+const mewtwo = new Mewtwo("mewtwo.png", psiquico, 10, 10, 0, 0, 4, "mewtwo")
 
 /* Como charmander y todas sus evoluciones van a pertenecer al entrenador, su imagen cuando querramos cambiarl al entrar a la batalla siempre va a ser
  * la default, ahora como nuestro entrenador nunca va a tener ni a bulbasaur ni a squirtle (y ninguna evolucion), estos tienen la imagen Riv, para que apunten

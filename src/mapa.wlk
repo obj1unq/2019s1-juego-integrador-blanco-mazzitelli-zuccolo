@@ -2,13 +2,13 @@ import pokemon.*
 import wollok.game.*
 import listaDePokemon.*
 import entrenador.*
+import visualBatalla.*
 
 object mapa {
 	
 	method dibujarMapa() {
 		
 		game.ground("suelo.png")
-		//game.sound("main.mp3")
 		
 		// Camino
 		
@@ -111,7 +111,7 @@ object mapa {
 		game.addVisualIn(snorlax, game.at(20,10))
 		game.addVisualIn(arbustoCorte, game.at(20,4))
 		game.addVisualIn(arbustoCorte, game.at(21,4))
-		game.addVisualIn(guardia, game.at(27,11))
+		//game.addVisualIn(guardia, game.at(27,11))
 		game.addVisualIn(guardia, game.at(28,11))
 		game.addVisualIn(guardia, game.at(29,11))
 		
@@ -173,13 +173,14 @@ object camino {
 	method colisionasteCon(entrenador) {	}
 }
 
-object batallaFinal {
+class BatallaFinal inherits VisualBatalla {
+	
 	method image() = "peleaFinal.png"
 	
-	method colisionasteCon(entrenador) {
-		//hacer esto bro
-	}
+	method colisionasteCon(entrenador) { }
 }
+
+const batallaFinal = new BatallaFinal()
 
 object corte {
 	method image() = "fence.png"
