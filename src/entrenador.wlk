@@ -94,7 +94,7 @@ object ash {
 	method fase6() {
 		if(fase == 3) {
 			game.clear()
-			game.addVisual(imagenFinal)
+			game.addVisualIn(imagenFinal, game.at(3, 1))
 		}
 	}
 	

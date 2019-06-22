@@ -67,6 +67,6 @@ object pelea {
 }
 
 object imagenFinal {
-	method image() = "imagenFinal.png"	
+	method image() = "imagenFinal.jpg"	
 }
 

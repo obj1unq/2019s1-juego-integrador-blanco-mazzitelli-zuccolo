@@ -134,11 +134,11 @@ object mapa {
 		keyboard.left().onPressDo { ash.move(ash.position().left(1)) }
 		keyboard.right().onPressDo { ash.move(ash.position().right(1)) }
 		
-		keyboard.q().onPressDo { game.say(ash, "¡" + ash.pokemon().nombre() + " yo te elijo!!. " + "Estas a: " + ash.pokemon().vidaActual())}
+		keyboard.q().onPressDo { game.say(ash, "¡" + ash.pokemon().nombre() + " yo te elijo!!. " + "Estas a: " + ash.pokemon().vidaActual()) }
 		keyboard.z().onPressDo { ash.hablarConElPublico() }
 		
 		//Colisiones
-		game.whenCollideDo (ash, { entidad => entidad.colisionasteCon(ash) })
+		game.whenCollideDo ( ash, { entidad => entidad.colisionasteCon(ash) } )
 	}
 }
 
@@ -157,7 +157,7 @@ object hospital {
 	
 	method colisionasteCon(entrenador) {
 		entrenador.pokemon().vidaActual(entrenador.pokemon().vida() + 150)
-		game.say(self, "Curamos a tu Pokemon para que continue su aventura")
+		game.say(self, "Curamos a tu Pokemon para que continue su aventura, tene mas cuidado a la hora de pelear!!")
 	}
 }
 
