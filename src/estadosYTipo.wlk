@@ -1,5 +1,6 @@
 import pokemon.*
 import ataques.*
+import entrenador.*
 
 object natural {
 	method efecto(pokemon) {}

@@ -2,11 +2,11 @@ import pokemon.*
 import wollok.game.*
 import listaDePokemon.*
 import ataques.*
+import entrenador.*
 
 object visualBatalla {
 
 	method dibujarVisualBatalla(pok1, pok2) {
-		
 		// Fondo	
 		game.ground("fondoBatalla.png")
 		game.addVisualIn(pelea, game.at(5, 1))

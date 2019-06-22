@@ -4,6 +4,7 @@ import estadosYTipo.*
 import ataques.*
 import listaDePokemon.*
 import mapa.*
+import entrenador.*
 
 program Pokemon {
 	

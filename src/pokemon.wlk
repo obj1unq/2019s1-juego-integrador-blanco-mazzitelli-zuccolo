@@ -5,6 +5,7 @@ import visualBatalla.*
 import mapa.*
 //import combate.*
 import listaDePokemon.*
+import entrenador.*
 
 class Pokemon {
 
@@ -35,6 +36,7 @@ class Pokemon {
       	nombre = _nombre
  	}	
  	
+ 	//Getters
  	method cambiarImage(image_){image = image_}
  	method movimientos() {return movimientos}
 	method tipo() = tipo
@@ -47,12 +49,11 @@ class Pokemon {
 	method revertirImagen() { image = revertirImage }
 	method aprenderMovimiento(movimiento) { movimientos.add(movimiento) }
 	
-	method cambioDeBarra() {
-		if(self.vidaActual() < self.calculoDePorcentajeVida(25)) { self.barraDeVida(barraRoja) }
-		else if(self.vidaActual() < self.calculoDePorcentajeVida(50)) { self.barraDeVida(barraAmarilla) }
-	} 
-
-	method calculoDePorcentajeVida(p) = (p * self.vida()) / 100 
+//	method cambioDeBarra() {
+//		if(self.vidaActual() < self.calculoDePorcentajeVida(25)) { self.barraDeVida(barraRoja) }
+//		else if(self.vidaActual() < self.calculoDePorcentajeVida(50)) { self.barraDeVida(barraAmarilla) }
+//	} 
+//	method calculoDePorcentajeVida(p) = (p * self.vida()) / 100 
 	
 	//Actions
 	method elegirMovimientoDeCombate() = self.listaDeMovimientos().anyOne()
@@ -66,24 +67,32 @@ class Pokemon {
 	
 	method finalizarBatalla(pokemon) {
 		game.clear()
+		self.ashPerdioBatalla()
+		ash.ultimoPokemonColisionado().revertirImagen()
+		mapa.dibujarMapa()
+		self.ashGanoBatalla(pokemon)
+	}
+	
+	method ashPerdioBatalla() {
 		if (ash.pokemon() == self) {
 			ash.position(game.at(1, 11))
 		}
-		ash.ultimoPokemonColisionado().revertirImagen()
-		mapa.dibujarMapa()
+	}
+	
+	method ashGanoBatalla(pokemon) {
 		if (pokemon == ash.pokemon()) {
 			game.removeVisual(self)
 			pokemon.ganeBatalla()
-		}	
+		}
 	}
 	
 	method ganeBatalla() {
 		ash.pokemon(ash.discernirPokemon(charmeleon, charizard, megaCharizard))
 	}
 	
-	method aplicarEfectoSecundario(movimiento) {
-		movimiento.efectoSecundario(self)
-	}
+//	method aplicarEfectoSecundario(movimiento) {
+//		movimiento.efectoSecundario(self)
+//	}
 	
 	// Calculos de daño
 	
@@ -91,14 +100,13 @@ class Pokemon {
 		vidaActual -= ( (self.danioTotal(movimiento, pokemonAtacante)) - self.defensa() )
 	}
 	
-	method cambiarBarraDeVida() {
-		self.cambioDeBarra()
-		self.reemplazarBarra()
-	}
-	
-	method reemplazarBarra() {
-		game.addVisualIn(self.barraDeVida(), game.at(16,5))
-	}
+//	method cambiarBarraDeVida() {
+//		self.cambioDeBarra()
+//		self.reemplazarBarra()
+//	}
+//	method reemplazarBarra() {
+//		game.addVisualIn(self.barraDeVida(), game.at(16,5))
+//	}
 	
 	method danioTotal(movimiento, pokemonAtacante) = 
 		if(self.esDebil(movimiento)) { self.danioVerdadero(movimiento, pokemonAtacante) * 2 }
@@ -125,33 +133,6 @@ class Pokemon {
 		entrenador.pokemon().cambiarImagen()
 		self.cambiarImagen()
 	}
-}
-
-
-object ash {
-	
-	var property pokemon = charmander
-	
-	var property lastPosition
-	var property position = game.at(2,1)
-	
-	var property ultimoPokemonColisionado = charmander
-	
-	method image() = return "ash.png"
-	
-	method move(nuevaPosicion) {
-		lastPosition = position
-		self.position(nuevaPosicion)
-	}
-	
-	method stop(){
-		self.position(lastPosition)
-	}
-
-	method discernirPokemon(nivel1, nivel2, nivel3) =
-		if (self.pokemon().estadoEvolutivo() == 1) { nivel1 }
-		else if (self.pokemon().estadoEvolutivo() == 2) { nivel2 }
-		else { nivel3 }
 }
 
 object barraVerde {

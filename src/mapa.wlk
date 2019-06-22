@@ -1,6 +1,7 @@
 import pokemon.*
 import wollok.game.*
 import listaDePokemon.*
+import entrenador.*
 
 object mapa {
 	
@@ -17,88 +18,102 @@ object mapa {
 		
 		(1..9).forEach { y =>	(5..10).forEach { x => game.addVisualIn(pasto, game.at(x,y)) }	}
 		
-		(1..3).forEach { y =>	(12..29).forEach { x => game.addVisualIn(pasto, game.at(x,y)) }	}
+		(0..3).forEach { y =>	(12..30).forEach { x => game.addVisualIn(pasto, game.at(x,y)) }	}
 		
-		(11..14).forEach { y =>	(16..25).forEach { x => game.addVisualIn(pasto, game.at(x,y)) }	}
+		(11..15).forEach { y =>	(16..25).forEach { x => game.addVisualIn(pasto, game.at(x,y)) }	}
 
 		// Fences Primer Zona
 		const fence1 = new Fence()	
-		const fence2 = new Fence()
-		const fence3 = new Fence()
-		const fence4 = new Fence()
-		const fence5 = new Fence()
-		const fence6 = new Fence()
 		
 		game.addVisualIn(fence1, game.at(5,10))	
-		game.addVisualIn(fence2, game.at(6,10))
-		game.addVisualIn(fence3, game.at(7,10))
-		game.addVisualIn(fence4, game.at(8,10))
-		game.addVisualIn(fence5, game.at(9,10))
-		game.addVisualIn(fence6, game.at(10,10))
+		game.addVisualIn(fence1, game.at(6,10))
+		game.addVisualIn(fence1, game.at(7,10))
+		game.addVisualIn(fence1, game.at(8,10))
+		game.addVisualIn(fence1, game.at(9,10))
+		game.addVisualIn(fence1, game.at(10,10))
+		
+		game.addVisualIn(fence1, game.at(5,0))
+		game.addVisualIn(fence1, game.at(6,0))
+		game.addVisualIn(fence1, game.at(7,0))
+		game.addVisualIn(fence1, game.at(8,0))
+		game.addVisualIn(fence1, game.at(9,0))
+		game.addVisualIn(fence1, game.at(10,0))
+		
+		game.addVisualIn(fence1, game.at(11,5))
+		game.addVisualIn(fence1, game.at(11,10))
+		game.addVisualIn(fence1, game.at(11,9))
 		
 		// Fences Segunda Zona
-		const fence7 = new Fence()
-		const fence8 = new Fence()
-		const fence9 = new Fence()
-		const fence10 = new Fence()
-		const fence11 = new Fence()
-		const fence12 = new Fence()
-		const fence13 = new Fence()
-		const fence14 = new Fence()
-		const fence15 = new Fence()
-		const fence16 = new Fence()
-		const fence17 = new Fence()
-		const fence18 = new Fence()
-		const fence19 = new Fence()
-		const fence20 = new Fence()
-		const fence21 = new Fence()
-		const fence22 = new Fence()
 		
-		game.addVisualIn(fence7, game.at(12,4))	
-		game.addVisualIn(fence8, game.at(13,4))
-		game.addVisualIn(fence9, game.at(14,4))
-		game.addVisualIn(fence10, game.at(15,4))
-		game.addVisualIn(fence11, game.at(16,4))
-		game.addVisualIn(fence12, game.at(17,4))
-		game.addVisualIn(fence13, game.at(18,4))
-		game.addVisualIn(fence14, game.at(19,4))
-		game.addVisualIn(fence15, game.at(22,4))
-		game.addVisualIn(fence16, game.at(23,4))
-		game.addVisualIn(fence17, game.at(24,4))
-		game.addVisualIn(fence18, game.at(25,4))
-		game.addVisualIn(fence19, game.at(26,4))
-		game.addVisualIn(fence20, game.at(27,4))
-		game.addVisualIn(fence21, game.at(28,4))
-		game.addVisualIn(fence22, game.at(29,4))
+		game.addVisualIn(fence1, game.at(12,4))	
+		game.addVisualIn(fence1, game.at(13,4))
+		game.addVisualIn(fence1, game.at(14,4))
+		game.addVisualIn(fence1, game.at(15,4))
+		game.addVisualIn(fence1, game.at(16,4))
+		game.addVisualIn(fence1, game.at(17,4))
+		game.addVisualIn(fence1, game.at(18,4))
+		game.addVisualIn(fence1, game.at(19,4))
+		game.addVisualIn(fence1, game.at(22,4))
+		game.addVisualIn(fence1, game.at(23,4))
+		game.addVisualIn(fence1, game.at(24,4))
+		game.addVisualIn(fence1, game.at(25,4))
+		game.addVisualIn(fence1, game.at(26,4))
+		game.addVisualIn(fence1, game.at(27,4))
+		game.addVisualIn(fence1, game.at(28,4))
+		game.addVisualIn(fence1, game.at(29,4))
+		game.addVisualIn(fence1, game.at(30,4))
+		
+		game.addVisualIn(fence1, game.at(11,4))
+		game.addVisualIn(fence1, game.at(11,3))
+		game.addVisualIn(fence1, game.at(11,2))
+		game.addVisualIn(fence1, game.at(11,1))
+		game.addVisualIn(fence1, game.at(11,0))
 		
 		// Fences Tercer Zona
-
-		const fence23 = new Fence()
-		const fence24 = new Fence()
-		const fence25 = new Fence()
-		const fence26 = new Fence()
-		const fence27 = new Fence()
-		const fence28 = new Fence()
-		const fence29 = new Fence()
-		const fence30 = new Fence()
-
-		game.addVisualIn(fence23, game.at(16,10))
-		game.addVisualIn(fence24, game.at(17,10))
-		game.addVisualIn(fence25, game.at(18,10))
-		game.addVisualIn(fence26, game.at(19,10))
-		game.addVisualIn(fence27, game.at(22,10))
-		game.addVisualIn(fence28, game.at(23,10))
-		game.addVisualIn(fence29, game.at(24,10))
-		game.addVisualIn(fence30, game.at(25,10))		
+		game.addVisualIn(fence1, game.at(16,10))
+		game.addVisualIn(fence1, game.at(17,10))
+		game.addVisualIn(fence1, game.at(18,10))
+		game.addVisualIn(fence1, game.at(19,10))
+		game.addVisualIn(fence1, game.at(22,10))
+		game.addVisualIn(fence1, game.at(23,10))
+		game.addVisualIn(fence1, game.at(24,10))
+		game.addVisualIn(fence1, game.at(25,10))
+		
+		game.addVisualIn(fence1, game.at(15,10))
+		game.addVisualIn(fence1, game.at(15,11))
+		game.addVisualIn(fence1, game.at(15,12))
+		game.addVisualIn(fence1, game.at(15,13))
+		game.addVisualIn(fence1, game.at(15,14))
+		game.addVisualIn(fence1, game.at(15,15))
+		
+		game.addVisualIn(fence1, game.at(26,10))
+		game.addVisualIn(fence1, game.at(26,11))
+		game.addVisualIn(fence1, game.at(26,12))
+		game.addVisualIn(fence1, game.at(26,13))
+		game.addVisualIn(fence1, game.at(26,14))
+		game.addVisualIn(fence1, game.at(26,15))
+		
+		game.addVisualIn(fence1, game.at(30,10))
+		game.addVisualIn(fence1, game.at(30,11))
+		game.addVisualIn(fence1, game.at(30,12))
+		game.addVisualIn(fence1, game.at(30,13))
+		game.addVisualIn(fence1, game.at(30,14))
+		game.addVisualIn(fence1, game.at(30,15))
 
 		
 		// Batalla Final
 		
 		game.addVisualIn(batallaFinal, game.at(27,13))
 		
-		//Hospital
+		//Objetos del camino: Hospital, Snorlax, Arbustos, Guardia
 		
-		game.addVisualIn(hospital, game.at(1,11))		 
+		game.addVisualIn(hospital, game.at(1,11))
+		game.addVisualIn(snorlax, game.at(20,10))
+		game.addVisualIn(arbustoCorte, game.at(20,4))
+		game.addVisualIn(arbustoCorte, game.at(21,4))
+		game.addVisualIn(guardia, game.at(27,11))
+		game.addVisualIn(guardia, game.at(28,11))
+		game.addVisualIn(guardia, game.at(29,11))
 		
 		// Pokemon 
 		
@@ -120,6 +135,7 @@ object mapa {
 		keyboard.right().onPressDo { ash.move(ash.position().right(1)) }
 		
 		keyboard.q().onPressDo { game.say(ash, "¡" + ash.pokemon().nombre() + " yo te elijo!!. " + "Estas a: " + ash.pokemon().vidaActual())}
+		keyboard.z().onPressDo { ash.hablarConElPublico() }
 		
 		//Colisiones
 		game.whenCollideDo (ash, { entidad => entidad.colisionasteCon(ash) })
@@ -140,7 +156,7 @@ object hospital {
 	method image() = "centroPokemon.png"
 	
 	method colisionasteCon(entrenador) {
-		entrenador.pokemon().vidaActual(entrenador.pokemon().vida() + 40)
+		entrenador.pokemon().vidaActual(entrenador.pokemon().vida() + 150)
 		game.say(self, "Curamos a tu Pokemon para que continue su aventura")
 	}
 }
@@ -161,6 +177,89 @@ object batallaFinal {
 	method image() = "peleaFinal.png"
 	
 	method colisionasteCon(entrenador) {
-		//Ejecutar batalla final.
+		//hacer esto bro
+	}
+}
+
+object corte {
+	method image() = "fence.png"
+	
+	method colisionasteCon(entrenador) {
+		game.removeVisual(self)
+		entrenador.agregarAMochila(self)
+		game.say(entrenador, "Conseguí la Maquina Oculta Corte!")
+	}
+}
+
+object flauta {
+	method image() = "fence.png"
+	
+	method colisionasteCon(entrenador) {
+		game.removeVisual(self)
+		entrenador.agregarAMochila(self)
+		game.say(entrenador, "Conseguí la Flauta Blanca! Quizás ahora pueda despertar a ese Snorlax!")
+	}
+}
+
+object snorlax {
+	method image() = "snorlax.png"
+	
+	method colisionasteCon(entrenador) {
+		if(self.tieneFlauta(entrenador)) { self.despertar(entrenador) }
+		else { self.noDejarPasar(entrenador) }
+	}
+	
+	method tieneFlauta(entrenador) = entrenador.objetosEnMochila().contains(flauta)
+	
+	method despertar(entrenador) {
+		game.removeVisual(self)
+		game.say(entrenador, "Es increible lo rapido que corre para estar tan gordo... y yo que quería atraparlo.")
+	}
+	
+	method noDejarPasar(entrenador) {
+		game.say(entrenador, "Tengo que encontrar una forma de despertarlo... Tal vez algún item me ayude.")
+		entrenador.move(entrenador.position().down(1))
+	}
+}
+
+object arbustoCorte {
+	method image() = "arbusto.png"
+	
+	method colisionasteCon(entrenador) {
+		if(self.tieneCorte(entrenador)) { self.cortarArbusto(entrenador) }
+		else { self.noDejarPasar(entrenador) }
+	}
+	
+	method tieneCorte(entrenador) = entrenador.objetosEnMochila().contains(corte)
+	
+	method cortarArbusto(entrenador) {
+		game.removeVisual(self)
+		game.say(entrenador, "Ya esta! los corte, ahora puedo seguir!")
+	}
+	
+	method noDejarPasar(entrenador) {
+		game.say(entrenador, "Mmm necesito cortar estos arbustos... Quizás algún movimiento me ayude.")
+		entrenador.move(entrenador.position().up(1))
+	}
+}
+
+object guardia {
+	method image() = "guardia.png"
+	
+	method colisionasteCon(entrenador) {
+		if(self.esFuerte(entrenador)) { self.dejarPasar(entrenador) }
+		else { self.noDejarPasar(entrenador) }
+	}
+	
+	method esFuerte(entrenador) = entrenador.pokemon().estadoEvolutivo() == 4
+	
+	method dejarPasar(entrenador) {
+		game.say(entrenador, "Muy bien, es hora del combate final.")
+		game.removeVisual(self)
+	}
+	
+	method noDejarPasar(entrenador) {
+		game.say(self, "Deberías volverte más fuerte para intentar este combate.")
+		entrenador.move(entrenador.position().down(1))
 	}
 }
