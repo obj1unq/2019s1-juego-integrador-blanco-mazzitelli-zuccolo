@@ -183,7 +183,7 @@ class BatallaFinal inherits VisualBatalla {
 const batallaFinal = new BatallaFinal()
 
 object corte {
-	method image() = "fence.png"
+	method image() = "poke.png"
 	
 	method colisionasteCon(entrenador) {
 		game.removeVisual(self)
@@ -193,7 +193,7 @@ object corte {
 }
 
 object flauta {
-	method image() = "fence.png"
+	method image() = "poke.png"
 	
 	method colisionasteCon(entrenador) {
 		game.removeVisual(self)
