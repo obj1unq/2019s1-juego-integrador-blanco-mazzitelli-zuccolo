@@ -110,12 +110,12 @@ object mapa {
 		
 		game.addVisualIn(hospital, game.at(1,11))
 		game.addVisualIn(snorlax, game.at(20,10))
-		game.addVisualIn(arbustoCorte, game.at(20,4))
-		game.addVisualIn(arbustoCorte, game.at(21,4))
+		game.addVisualIn(arbustoCorte1, game.at(20,4))
+		game.addVisualIn(arbustoCorte2, game.at(21,4))
 		//game.addVisualIn(guardia, game.at(27,11))
-		game.addVisualIn(guardia, game.at(27,11))
-		game.addVisualIn(guardia, game.at(28,11))
-		game.addVisualIn(guardia, game.at(29,11))
+		game.addVisualIn(guardia1, game.at(27,11))
+		game.addVisualIn(guardia2, game.at(28,11))
+		game.addVisualIn(guardia3, game.at(29,11))
 		
 		// Pokemon 
 		
@@ -185,7 +185,7 @@ class BatallaFinal inherits VisualBatalla {
 const batallaFinal = new BatallaFinal()
 
 object corte {
-	method image() = "poke.png"
+	method image() = "pokeball1.png"
 	
 	method colisionasteCon(entrenador) {
 		game.removeVisual(self)
@@ -195,7 +195,7 @@ object corte {
 }
 
 object flauta {
-	method image() = "poke.png"
+	method image() = "pokeball1.png"
 	
 	method colisionasteCon(entrenador) {
 		game.removeVisual(self)
@@ -225,7 +225,7 @@ object snorlax {
 	}
 }
 
-object arbustoCorte {
+class ArbustoCorte {
 	method image() = "arbusto.png"
 	
 	method colisionasteCon(entrenador) {
@@ -246,7 +246,10 @@ object arbustoCorte {
 	}
 }
 
-object guardia {
+const arbustoCorte1 = new ArbustoCorte()
+const arbustoCorte2 = new ArbustoCorte()
+
+class Guardia {
 	method image() = "guardia.png"
 	
 	method colisionasteCon(entrenador) {
@@ -266,3 +269,7 @@ object guardia {
 		entrenador.move(entrenador.position().down(1))
 	}
 }
+
+const guardia1 = new Guardia()
+const guardia2 = new Guardia()
+const guardia3 = new Guardia()
