@@ -23,7 +23,6 @@ class Pokemon {
 	var image = "pasto.png"
 	var revertirImage = image
 	const image2
-	var property barraDeVida = barraVerde
 	
 	constructor(_image, _tipo, _vida, _vidaActual, _ataque, _defensa, _estadoEvolutivo, _nombre) {
       	image2 = _image
@@ -49,12 +48,6 @@ class Pokemon {
 	method revertirImagen() { image = revertirImage }
 	method aprenderMovimiento(movimiento) { movimientos.add(movimiento) }
 	
-//	method cambioDeBarra() {
-//		if(self.vidaActual() < self.calculoDePorcentajeVida(25)) { self.barraDeVida(barraRoja) }
-//		else if(self.vidaActual() < self.calculoDePorcentajeVida(50)) { self.barraDeVida(barraAmarilla) }
-//	} 
-//	method calculoDePorcentajeVida(p) = (p * self.vida()) / 100 
-	
 	//Actions
 	method elegirMovimientoDeCombate() = self.listaDeMovimientos().anyOne()
 	
@@ -62,7 +55,6 @@ class Pokemon {
 		self.calculoDeDanio(movimiento, pokemonAtacante)
 		//self.aplicarEfectoSecundario(movimiento)
 		if (self.vidaActual() <= 0) { self.finalizarBatalla(pokemonAtacante) }
-		//else { self.cambiarBarraDeVida() }
 	}
 	
 	method finalizarBatalla(pokemon) {
@@ -87,7 +79,7 @@ class Pokemon {
 	}
 	
 	method ganeBatalla() {
-		ash.pokemon(ash.discernirPokemon(charmeleon, charizard, megaCharizard))
+		if (ash.pokemon().estadoEvolutivo() <= ash.ultimoPokemonColisionado().estadoEvolutivo()) { ash.pokemon(ash.discernirPokemon(charmeleon, charizard, megaCharizard)) }
 	}
 	
 //	method aplicarEfectoSecundario(movimiento) {
@@ -99,14 +91,6 @@ class Pokemon {
 	method calculoDeDanio(movimiento, pokemonAtacante) {
 		vidaActual -= ( (self.danioTotal(movimiento, pokemonAtacante)) - self.defensa() )
 	}
-	
-//	method cambiarBarraDeVida() {
-//		self.cambioDeBarra()
-//		self.reemplazarBarra()
-//	}
-//	method reemplazarBarra() {
-//		game.addVisualIn(self.barraDeVida(), game.at(16,5))
-//	}
 	
 	method danioTotal(movimiento, pokemonAtacante) = 
 		if(self.esDebil(movimiento)) { self.danioVerdadero(movimiento, pokemonAtacante) * 2 }
@@ -133,17 +117,4 @@ class Pokemon {
 		entrenador.pokemon().cambiarImagen()
 		self.cambiarImagen()
 	}
-}
-
-object barraVerde {
-	method image() = "barraVerde.png"
-}
-
-object barraAmarilla {
-	method image() = "barraAmarilla.png"
-	
-}
-
-object barraRoja {
-	method image() = "barraRoja.png"
 }

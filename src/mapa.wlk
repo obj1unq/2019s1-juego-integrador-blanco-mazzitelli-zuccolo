@@ -74,6 +74,7 @@ object mapa {
 		game.addVisualIn(fence1, game.at(17,10))
 		game.addVisualIn(fence1, game.at(18,10))
 		game.addVisualIn(fence1, game.at(19,10))
+		game.addVisualIn(fence1, game.at(21,10))
 		game.addVisualIn(fence1, game.at(22,10))
 		game.addVisualIn(fence1, game.at(23,10))
 		game.addVisualIn(fence1, game.at(24,10))
@@ -112,6 +113,7 @@ object mapa {
 		game.addVisualIn(arbustoCorte, game.at(20,4))
 		game.addVisualIn(arbustoCorte, game.at(21,4))
 		//game.addVisualIn(guardia, game.at(27,11))
+		game.addVisualIn(guardia, game.at(27,11))
 		game.addVisualIn(guardia, game.at(28,11))
 		game.addVisualIn(guardia, game.at(29,11))
 		
