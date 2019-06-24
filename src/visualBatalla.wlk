@@ -22,12 +22,14 @@ class VisualBatalla {
 		
 		keyboard.a().onPressDo {
 			game.say(pok1, ash.pokemon().listaDeMovimientos().head().nombre() + ". Mi vida es " + ash.pokemon().vidaActual())
+			game.say(ash.ultimoPokemonColisionado(), ". Mi vida es " + ash.ultimoPokemonColisionado().vidaActual())
 			ash.ultimoPokemonColisionado().recibirAtaque(ash.pokemon().listaDeMovimientos().head(), ash.pokemon())
 			ash.pokemon().recibirAtaque(ash.ultimoPokemonColisionado().elegirMovimientoDeCombate(), ash.ultimoPokemonColisionado())
 		}
 		
 		keyboard.s().onPressDo {
 			game.say(pok1, ash.pokemon().listaDeMovimientos().last().nombre() + ". Mi vida es " + ash.pokemon().vidaActual())
+			game.say(ash.ultimoPokemonColisionado(), ". Mi vida es " + ash.ultimoPokemonColisionado().vidaActual())
 			ash.ultimoPokemonColisionado().recibirAtaque(ash.pokemon().listaDeMovimientos().last(), ash.pokemon())
 			ash.pokemon().recibirAtaque(ash.ultimoPokemonColisionado().elegirMovimientoDeCombate(), ash.ultimoPokemonColisionado())
 		}	
