@@ -77,11 +77,12 @@ class TajoAereo inherits Movimiento{
 }
 
 const ascuas = new Ascuas(20, fuego, "ascuas.png", "Ascuas")
-const araniazo = new Araniazo(20, normal, "araniazo.png", "Arañazo")
+const araniazo = new Araniazo(15, normal, "araniazo.png", "Arañazo")
 const pirotecnia = new Pirotecnia(60, fuego, "pirotecnia.png", "Pirotecnia")
 const cuchillada = new Cuchillada(70, normal, "cuchillada.png", "Cuchillada")
-const lanzallamas = new Lanzallamas(110, fuego, "lanzallamas.png", "Lanzallamas")
-const tajoAereo = new TajoAereo(80, volador, "tajoAereo.png", "Tajo Aéreo")
+const lanzallamas = new Lanzallamas(90, fuego, "lanzallamas.png", "Lanzallamas")
+const lanzallamas2 = new Lanzallamas(150, fuego, "lanzallamas.png", "Lanzallamas")
+const tajoAereo = new TajoAereo(100, volador, "tajoAereo.png", "Tajo Aéreo")
 
 //Ataques de la linea de Bulbasaur.
 //Bulbasaur:
@@ -127,12 +128,12 @@ class BombaLodo inherits Movimiento {
 	}
 }
 
-const latigoCepa = new LatigoCepa(20, planta, "latigoCepa.png", "Latigo Cepa")
+const latigoCepa = new LatigoCepa(15, planta, "latigoCepa.png", "Latigo Cepa")
 const placaje = new Placaje(20, normal, "placaje.png", "Placaje")
-const hojaAfilada = new HojaAfilada(70, planta, "hojaAfilada.png", "Hoja Afilada")
-const cargaToxica = new CargaToxica(65, veneno, "cargaToxica.png", "Carga Tóxica")
+const hojaAfilada = new HojaAfilada(45, planta, "hojaAfilada.png", "Hoja Afilada")
+const cargaToxica = new CargaToxica(40, veneno, "cargaToxica.png", "Carga Tóxica")
 const rayoSolar = new RayoSolar(120, planta, "rayoSolar.png", "Rayo Solar")
-const bombaLodo = new BombaLodo(95, veneno, "bombaLodo.png", "Bomba Lodo")
+const bombaLodo = new BombaLodo(150, veneno, "bombaLodo.png", "Bomba Lodo")
 
 //Ataques de la linea de Squirtle-
 //Squirtle: (+ placaje)
@@ -161,9 +162,9 @@ class Triturar inherits Movimiento {
 
 const pistolaAgua = new PistolaAgua(20, agua, "pistolaAgua.png", "Pistola Agua")
 const rayoBurbuja = new RayoBurbuja(60, agua, "rayoBurbuja.png", "Rayo Burbuja")
-const mordisco = new Mordisco(60, siniestro, "mordisco.png", "Mordisco")
-const hidroBomba = new HidroBomba(120, agua, "hidroBomba.png", "Hidrobomba")
-const triturar = new Triturar(100, siniestro, "triturar.png", "Triturar")
+const mordisco = new Mordisco(40, siniestro, "mordisco.png", "Mordisco")
+const hidroBomba = new HidroBomba(80, agua, "hidroBomba.png", "Hidrobomba")
+const triturar = new Triturar(70, siniestro, "triturar.png", "Triturar")
 
 //Boss:
 class OndaPsiquica inherits Movimiento {
@@ -179,5 +180,5 @@ class Concentrar inherits Movimiento {
 	method diezPorcientoDe(pokemon) = ( pokemon.defensa() * 90 ) / 100
 }
 
-const ondaPsiquica = new OndaPsiquica(100, psiquico, "psiquico.png", "Psíquico")
-const concentrar = new Concentrar(40, psiquico, "concentrar.png", "Concentrar")
+const ondaPsiquica = new OndaPsiquica(150, psiquico, "psiquico.png", "Psíquico")
+const concentrar = new Concentrar(100, psiquico, "concentrar.png", "Concentrar")

@@ -18,7 +18,6 @@ program Pokemon {
 	// Debilidades
 	planta.agregarDebilidad(fuego) 
 	planta.agregarDebilidad(veneno)
-	planta.agregarDebilidad(volador)
 	fuego.agregarDebilidad(agua)
 	agua.agregarDebilidad(planta)
 	veneno.agregarDebilidad(psiquico)
@@ -36,7 +35,7 @@ program Pokemon {
 	charizard.aprenderMovimiento(lanzallamas)
 	charizard.aprenderMovimiento(tajoAereo)
 	
-	megaCharizard.aprenderMovimiento(lanzallamas)
+	megaCharizard.aprenderMovimiento(lanzallamas2)
 	megaCharizard.aprenderMovimiento(tajoAereo)
 	
 	bulbasaur.aprenderMovimiento(latigoCepa)
