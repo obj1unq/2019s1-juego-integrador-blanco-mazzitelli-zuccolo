@@ -240,7 +240,7 @@ object snorlax {
 }
 
 class ArbustoCorte {
-	method image() = "arbusto.png"
+	method image() = "arbusto.png" 
 	
 	method colisionasteCon(entrenador) {
 		if(self.tieneCorte(entrenador)) { self.cortarArbusto(entrenador) }
