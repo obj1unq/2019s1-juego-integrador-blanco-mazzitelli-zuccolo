@@ -3,7 +3,6 @@ import estadosYTipo.*
 import ataques.*
 import visualBatalla.*
 import mapa.*
-//import combate.*
 import listaDePokemon.*
 import pokemon.*
 
@@ -49,10 +48,14 @@ object ash {
 	} 
 	
 	method cambiarTextoActual() { 
+		self.faseInicial()
+		self.faseFinal()
+	}
+	
+	method faseInicial() {
 		self.fase1()
 		self.fase2()
 		self.fase3()
-		self.faseFinal()
 	}
 	
 	method faseFinal() {

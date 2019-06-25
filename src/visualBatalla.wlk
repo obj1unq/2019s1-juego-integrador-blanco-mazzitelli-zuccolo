@@ -9,13 +9,14 @@ class VisualBatalla {
 	method dibujarVisualBatalla(pok1, pok2) {
 		// Fondo
 		game.ground("fondoBatalla.png")
-		//game.sound("battle.mp3")
 		game.addVisualIn(pelea, game.at(5, 1))
 		// Agregados pelea
 		game.addVisualIn(pok1, game.at(7, 5))
 		game.addVisualIn(pok2, game.at(18, 10))
 		movimientoPrincipal.imagen(ash.pokemon().listaDeMovimientos().head().image())
 		movimientoSecundario.imagen(ash.pokemon().listaDeMovimientos().last().image())
+		game.addVisualIn(pok1.barraDeVida(), game.at(16,5))
+		game.addVisualIn(pok2.barraDeVida(), game.at(5,12))
 		game.addVisualIn(movimientoPrincipal, game.at(8, 1))
 		game.addVisualIn(movimientoSecundario, game.at(17, 1))
 		
@@ -34,9 +35,10 @@ class VisualBatalla {
 		}
 	}
 	
-	method atacaPokemonAsh(pokemon, ataque) {
-		game.say(pokemon, "¡" + ataque.nombre() + "!")
-		ash.ultimoPokemonColisionado().recibirAtaque(ataque, pokemon)
+	method atacaPokemonAsh(pokemonAtacante, movimiento) {
+		game.say(pokemonAtacante, "¡" + movimiento.nombre() + "!")
+		ash.ultimoPokemonColisionado().cambiarBarraDeVida(movimiento, pokemonAtacante, game.at(5,12))
+		ash.ultimoPokemonColisionado().recibirAtaque(movimiento, pokemonAtacante)
 	}
 	
 	method contraatacarSiNoCai(pokemon) {
@@ -45,6 +47,7 @@ class VisualBatalla {
 		if(not pokemon.meQuedeSinVida()) { 
 			ataqueAUtilizar = ash.ultimoPokemonColisionado().elegirMovimientoDeCombate()
 			game.say(pokemon, "¡" + ataqueAUtilizar.nombre() + "!")
+			ash.pokemon().cambiarBarraDeVida(ataqueAUtilizar, pokemon, game.at(16,5))
 			ash.pokemon().recibirAtaque(ataqueAUtilizar, ash.ultimoPokemonColisionado())
 		}
 	}
@@ -62,8 +65,10 @@ class VisualBatalla {
 	
 	method reveritirEstadistiacasDeAsh() {
 		ash.pokemon().vidaActual(ash.pokemon().vida())
+		ash.pokemon().vidaRelativa(ash.pokemon().vida())
 		ash.pokemon().ataqueActual(ash.pokemon().ataque())
 		ash.pokemon().defensaActual(ash.pokemon().defensa())
+		ash.pokemon().barraDeVida(barraVerde)
 	}
 	
 	method revertirEstadisticasDeEnemigoSiVive() {
@@ -72,20 +77,20 @@ class VisualBatalla {
 	
 	method revertirEstadisticasDeEnemigo() {
 		ash.ultimoPokemonColisionado().vidaActual(ash.ultimoPokemonColisionado().vida())
+		ash.ultimoPokemonColisionado().vidaRelativa(ash.ultimoPokemonColisionado().vida())
 		ash.ultimoPokemonColisionado().ataqueActual(ash.ultimoPokemonColisionado().ataque())
 		ash.ultimoPokemonColisionado().defensaActual(ash.ultimoPokemonColisionado().defensa())
+		ash.ultimoPokemonColisionado().barraDeVida(barraVerde)
 	}
 }
 
 const visualBatalla = new VisualBatalla()
 
-//Para los ataques, hay que buscar la forma de que cuando tenemos a charmander las imagenes sean de los ataques de charmander, y asi con sus evoluciones.
-//El problema principal es que no me esta dejando importar el program.wpgm, sino directamente le preguntamos el pokemon a ash1 y listo, pero no me dejo.
 object movimientoPrincipal {
 
 	var property imagen = ash.pokemon().listaDeMovimientos().head().image()
 
-	method image() = imagen // Cambiar esta Imagen por la del nombre del ataque.
+	method image() = imagen
 
 	method elegirImagen(pokemon) {
 		imagen = pokemon.listaDeMovimientos().first().image()
@@ -123,5 +128,9 @@ object barraAmarilla {
 
 object barraRoja {
 	method image() = "barraRoja.png"
+}
+
+object barraVacia {
+	method image() = "barraVacia.png"
 }
 

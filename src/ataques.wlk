@@ -127,7 +127,7 @@ const rayoSolar = new RayoSolar(120, planta, "rayoSolar.png", "Rayo Solar")
 const desarrollo = new Desarrollo(0, planta, "desarrollo.png", "Desarrollo")
 
 //Ataques de la linea de Squirtle-
-//Squirtle: (+ placaje)
+//Squirtle: (+ gruñido)
 class PistolaAgua inherits Movimiento {
 	override method efectoSecundario(pokemonAtacado, pokemonAtacante) {  }
 }
@@ -148,7 +148,7 @@ class HidroBomba inherits Movimiento {
 
 class Refugio inherits Movimiento {
 	override method efectoSecundario(pokemonAtacado, pokemonAtacante) { 
-		pokemonAtacante.defensaActual((pokemonAtacante.defensaActual() * 1.5).truncate(0))
+		pokemonAtacante.defensaActual((pokemonAtacante.defensaActual() * 1.2).truncate(0))
 		game.say(pokemonAtacante, "¡Mi defensa subió de " + pokemonAtacante.defensa() + " a " + pokemonAtacante.defensaActual())
 	}
 	

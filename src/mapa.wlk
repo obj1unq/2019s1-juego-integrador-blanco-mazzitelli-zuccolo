@@ -106,13 +106,12 @@ object mapa {
 		
 		game.addVisualIn(batallaFinal, game.at(27,13))
 		
-		//Objetos del camino: Hospital, Snorlax, Arbustos, Guardia
+		//Objetos del camino: Hospital, Snorlax, Arbustos, Guardias
 		
 		game.addVisualIn(hospital, game.at(1,11))
 		game.addVisualIn(snorlax, game.at(20,10))
 		game.addVisualIn(arbustoCorte1, game.at(20,4))
 		game.addVisualIn(arbustoCorte2, game.at(21,4))
-		//game.addVisualIn(guardia, game.at(27,11))
 		game.addVisualIn(guardia1, game.at(27,11))
 		game.addVisualIn(guardia2, game.at(28,11))
 		game.addVisualIn(guardia3, game.at(29,11))
@@ -164,6 +163,8 @@ object hospital {
 	
 	method colisionasteCon(entrenador) {
 		entrenador.pokemon().vidaActual(entrenador.pokemon().vida() + 150)
+		entrenador.pokemon().vidaRelativa(entrenador.pokemon().vida() + 150)
+		entrenador.pokemon().barraDeVida(barraVerde)
 		game.say(self, "Curamos a tu Pokemon para que continue su aventura, tene mas cuidado a la hora de pelear!!")
 	}
 }

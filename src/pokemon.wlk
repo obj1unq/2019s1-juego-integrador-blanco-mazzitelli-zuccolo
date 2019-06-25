@@ -11,11 +11,11 @@ class Pokemon {
 	const tipo 
 	var property vida
 	var property vidaActual
+	var property vidaRelativa
 	var property ataque
 	var property ataqueActual
 	var property defensa
 	var property defensaActual
-	var property estado = natural
 	const estadoEvolutivo
 	var property movimientos = []
 	const nombre
@@ -26,11 +26,12 @@ class Pokemon {
 	const image2
 	var property barraDeVida = barraVerde
 	
-	constructor(_image, _tipo, _vida, _vidaActual, _ataque, _ataqueActual, _defensa, _defensaActual, _estadoEvolutivo, _nombre) {
+	constructor(_image, _tipo, _vida, _vidaActual, _vidaRelativa, _ataque, _ataqueActual, _defensa, _defensaActual, _estadoEvolutivo, _nombre) {
       	image2 = _image
       	tipo = _tipo
       	vida = _vida
       	vidaActual = _vidaActual
+      	vidaRelativa = _vidaRelativa
       	ataque = _ataque
       	ataqueActual = _ataqueActual
       	defensa = _defensa
@@ -95,11 +96,37 @@ class Pokemon {
 		if (ash.pokemon().estadoEvolutivo() <= ash.ultimoPokemonColisionado().estadoEvolutivo()) { ash.pokemon(ash.discernirPokemon(charmeleon, charizard, megaCharizard)) }
 	}
 	
+	method cambiarBarraDeVida(movimiento, pokemonAtacante, position) {
+		game.removeVisual(self.barraDeVida())
+		self.calculoRelativo(movimiento, pokemonAtacante)
+		self.cambiarBarraSi()
+		game.addVisualIn(self.barraDeVida(), position)
+	}
+	
 	// Calculos de daño
 	
 	method calculoDeDanio(movimiento, pokemonAtacante) {
 		vidaActual -= movimiento.calcularDanio(pokemonAtacante, self)
 	}
+	
+	method calculoRelativo(movimiento, pokemonAtacante) {
+		vidaRelativa -= movimiento.calcularDanio(pokemonAtacante, self)
+	}
+	
+	method calculoDePorcentajeVida(p) = (p * self.vida()) / 100 
+	
+	method cambiarBarraSi() {
+		self.vidaAlXPorciento(100, barraVerde)
+		self.vidaAlXPorciento(50, barraAmarilla)
+		self.vidaAlXPorciento(25, barraRoja)
+		self.vidaAlXPorciento(0, barraVacia)
+	}
+	
+	method vidaAlXPorciento(x, barraNueva) {
+		if(self.calculoDePorcentajeVida(x) >= self.vidaRelativa()) { self.cambiarBarra(barraNueva) }
+	}
+	
+	method cambiarBarra(barra) { self.barraDeVida(barra) }
 	
 	//Colision con Entrenador
 	
