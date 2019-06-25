@@ -64,7 +64,13 @@ program Pokemon {
 	ash.pokemon(charmander)
 	
 	//Visuals
-	mapa.dibujarMapa()
+	
+	//mapa.dibujarMapa()
+	game.addVisualIn(inicio, game.at(0,0))
+	keyboard.enter().onPressDo { 
+		game.clear()
+		mapa.dibujarMapa()
+	}
 	
 	game.start()
 }

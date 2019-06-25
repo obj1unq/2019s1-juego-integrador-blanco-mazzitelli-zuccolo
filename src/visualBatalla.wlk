@@ -8,7 +8,8 @@ class VisualBatalla {
 
 	method dibujarVisualBatalla(pok1, pok2) {
 		// Fondo
-		game.ground("fondoBatalla.png")
+		//game.ground("fondoBatalla.png")
+		game.addVisualIn(fondoPelea, game.at(0, 0))
 		game.addVisualIn(pelea, game.at(5, 1))
 		// Agregados pelea
 		game.addVisualIn(pok1, game.at(7, 5))
@@ -112,6 +113,10 @@ object pelea {
 
 	method image() = "pelea.png"
 
+}
+
+object fondoPelea {
+	method image() = "fondoBatalla.jpg"
 }
 
 object imagenFinal {

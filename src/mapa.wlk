@@ -4,12 +4,16 @@ import listaDePokemon.*
 import entrenador.*
 import visualBatalla.*
 
+object inicio {
+		method image () = "inicio.jpg"
+	}
+
 object mapa {
 	
 	method dibujarMapa() {
 		
-		game.ground("suelo.png")
-		
+		//game.ground("suelo.png")
+		game.addVisualIn(suelo, game.at(0,0))
 		// Camino
 		
 		game.addVisualIn(camino, game.at(1,1))
@@ -179,6 +183,10 @@ object camino {
 	method image() = "camino.png"
 	
 	method colisionasteCon(entrenador) {	}
+}
+
+object suelo {
+	method image() = "suelo1.jpg"
 }
 
 class BatallaFinal inherits VisualBatalla {
