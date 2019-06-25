@@ -69,7 +69,7 @@ program Pokemon {
 	game.addVisualIn(inicio, game.at(0,0))
 	keyboard.enter().onPressDo { 
 		game.clear()
-		mapa.dibujarMapa()
+		mapa.dibujarMapa() 
 	}
 	
 	game.start()
