@@ -14,25 +14,36 @@ class VisualBatalla {
 		// Agregados pelea
 		game.addVisualIn(pok1, game.at(7, 5))
 		game.addVisualIn(pok2, game.at(18, 10))
-		//game.addVisualIn(pok1.barraDeVida(), game.at(16, 5))
 		movimientoPrincipal.imagen(ash.pokemon().listaDeMovimientos().head().image())
 		movimientoSecundario.imagen(ash.pokemon().listaDeMovimientos().last().image())
 		game.addVisualIn(movimientoPrincipal, game.at(8, 1))
 		game.addVisualIn(movimientoSecundario, game.at(17, 1))
 		
 		keyboard.a().onPressDo {
-			game.say(pok1, ash.pokemon().listaDeMovimientos().head().nombre() + ". Mi vida es " + ash.pokemon().vidaActual())
-			game.say(ash.ultimoPokemonColisionado(), ". Mi vida es " + ash.ultimoPokemonColisionado().vidaActual())
-			ash.ultimoPokemonColisionado().recibirAtaque(ash.pokemon().listaDeMovimientos().head(), ash.pokemon())
-			ash.pokemon().recibirAtaque(ash.ultimoPokemonColisionado().elegirMovimientoDeCombate(), ash.ultimoPokemonColisionado())
+			self.cantarVidaSiEstaVivo(pok1)
+			ash.ultimoPokemonColisionado().recibirAtaque(pok1.listaDeMovimientos().head(), pok1)
+			self.cantarVidaSiEstaVivo(pok2)
+			self.contraatacarSiNoCai(pok2)
 		}
 		
 		keyboard.s().onPressDo {
-			game.say(pok1, ash.pokemon().listaDeMovimientos().last().nombre() + ". Mi vida es " + ash.pokemon().vidaActual())
-			game.say(ash.ultimoPokemonColisionado(), ". Mi vida es " + ash.ultimoPokemonColisionado().vidaActual())
-			ash.ultimoPokemonColisionado().recibirAtaque(ash.pokemon().listaDeMovimientos().last(), ash.pokemon())
+			self.cantarVidaSiEstaVivo(pok1)
+			ash.ultimoPokemonColisionado().recibirAtaque(pok1.listaDeMovimientos().last(), pok1)
+			self.cantarVidaSiEstaVivo(pok2)
+			self.contraatacarSiNoCai(pok2)
+		}
+	}
+	
+	method contraatacarSiNoCai(pokemon) {
+		if(not pokemon.meQuedeSinVida()) { 
 			ash.pokemon().recibirAtaque(ash.ultimoPokemonColisionado().elegirMovimientoDeCombate(), ash.ultimoPokemonColisionado())
-		}	
+		}
+	}
+	
+	method cantarVidaSiEstaVivo(pokemon) {
+		if(not pokemon.meQuedeSinVida()) {
+			game.say(pokemon, ". Mi vida es " + pokemon.vidaActual())
+		}
 	}
 }
 
@@ -70,5 +81,17 @@ object pelea {
 
 object imagenFinal {
 	method image() = "imagenFinal.jpg"	
+}
+
+object barraVerde {
+	method image() = "barraVerde.png"
+}
+
+object barraAmarilla {
+	method image() = "barraAmarilla.png"
+}
+
+object barraRoja {
+	method image() = "barraRoja.png"
 }
 

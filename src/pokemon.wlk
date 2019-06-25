@@ -3,7 +3,6 @@ import estadosYTipo.*
 import ataques.*
 import visualBatalla.*
 import mapa.*
-//import combate.*
 import listaDePokemon.*
 import entrenador.*
 
@@ -23,6 +22,7 @@ class Pokemon {
 	var image = "pasto.png"
 	var revertirImage = image
 	const image2
+	var property barraDeVida = barraVerde
 	
 	constructor(_image, _tipo, _vida, _vidaActual, _ataque, _defensa, _estadoEvolutivo, _nombre) {
       	image2 = _image
@@ -36,8 +36,8 @@ class Pokemon {
  	}	
  	
  	//Getters
- 	method cambiarImage(image_){image = image_}
- 	method movimientos() {return movimientos}
+ 	method cambiarImage(image_){ image = image_ }
+ 	method movimientos() { return movimientos }
 	method tipo() = tipo
 	method image() = image2
 	method listaDeMovimientos() = movimientos
@@ -53,16 +53,23 @@ class Pokemon {
 	
 	method recibirAtaque(movimiento, pokemonAtacante) {
 		self.calculoDeDanio(movimiento, pokemonAtacante)
-		//self.aplicarEfectoSecundario(movimiento)
-		if (self.vidaActual() <= 0) { self.finalizarBatalla(pokemonAtacante) }
+		self.terminarBatallaSiCai(pokemonAtacante)
 	}
+	
+	method meQuedeSinVida() = self.vidaActual() <= 0
+	
+	method terminarBatallaSiCai(pokemonAtacante) { if (self.meQuedeSinVida()) { self.finalizarBatalla(pokemonAtacante) } }
 	
 	method finalizarBatalla(pokemon) {
 		game.clear()
 		self.ashPerdioBatalla()
+		self.revertirVisuales()
+		self.ashGanoBatalla(pokemon)
+	}
+	
+	method revertirVisuales() {
 		ash.ultimoPokemonColisionado().revertirImagen()
 		mapa.dibujarMapa()
-		self.ashGanoBatalla(pokemon)
 	}
 	
 	method ashPerdioBatalla() {
@@ -82,23 +89,11 @@ class Pokemon {
 		if (ash.pokemon().estadoEvolutivo() <= ash.ultimoPokemonColisionado().estadoEvolutivo()) { ash.pokemon(ash.discernirPokemon(charmeleon, charizard, megaCharizard)) }
 	}
 	
-//	method aplicarEfectoSecundario(movimiento) {
-//		movimiento.efectoSecundario(self)
-//	}
-	
 	// Calculos de daño
 	
 	method calculoDeDanio(movimiento, pokemonAtacante) {
-		vidaActual -= ( (self.danioTotal(movimiento, pokemonAtacante)) - self.defensa() )
+		vidaActual -= movimiento.calcularDanio(pokemonAtacante, self)
 	}
-	
-	method danioTotal(movimiento, pokemonAtacante) = 
-		if(self.esDebil(movimiento)) { self.danioVerdadero(movimiento, pokemonAtacante) * 2 }
-		else { self.danioVerdadero(movimiento, pokemonAtacante) }
-		
-	method danioVerdadero(movimiento, pokemonAtacante) = movimiento.potenciaDelAtaque() + pokemonAtacante.ataque()
-	
-	method esDebil(movimiento) = self.tipo().listaDeDebilidades().contains(movimiento.tipoDelAtaque())
 	
 	//Colision con Entrenador
 	

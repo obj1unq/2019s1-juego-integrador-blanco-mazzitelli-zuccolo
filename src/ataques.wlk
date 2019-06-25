@@ -22,6 +22,17 @@ class Movimiento {
 	method tipoDelAtaque() = tipo
 	
 	method efectoSecundario(pokemon) 
+	
+	method calcularDanio(pokemonAtacante, pokemonAtacado) =
+		self.danioTotal(pokemonAtacante, pokemonAtacado) - pokemonAtacado.defensa()
+	
+	method danioTotal(pokemonAtacante, pokemonAtacado) = 
+		if(self.esDebil(pokemonAtacado)) { self.danioVerdadero(pokemonAtacante) * 2 }
+		else { self.danioVerdadero(pokemonAtacante) }
+		
+	method danioVerdadero(pokemonAtacante) = self.potenciaDelAtaque() + pokemonAtacante.ataque()
+	
+	method esDebil(pokemonAtacado) = pokemonAtacado.tipo().listaDeDebilidades().contains(self.tipoDelAtaque())
 }
 
 //Ataques de la linea de Charmander.

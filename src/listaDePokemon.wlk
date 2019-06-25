@@ -85,7 +85,7 @@ class Blastoise inherits Pokemon {
 	
 }
 
-class Mewtwo inherits Pokemon {
+class Mewtwo inherits Pokemon {	
 	override method ashGanoBatalla(pokemon) {
 		if (pokemon == ash.pokemon()) {
 			game.removeVisual(self)
