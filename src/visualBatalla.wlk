@@ -21,29 +21,59 @@ class VisualBatalla {
 		
 		keyboard.a().onPressDo {
 			self.cantarVidaSiEstaVivo(pok1)
-			ash.ultimoPokemonColisionado().recibirAtaque(pok1.listaDeMovimientos().head(), pok1)
+			self.atacaPokemonAsh(pok1, pok1.listaDeMovimientos().head())
 			self.cantarVidaSiEstaVivo(pok2)
 			self.contraatacarSiNoCai(pok2)
 		}
 		
 		keyboard.s().onPressDo {
 			self.cantarVidaSiEstaVivo(pok1)
-			ash.ultimoPokemonColisionado().recibirAtaque(pok1.listaDeMovimientos().last(), pok1)
+			self.atacaPokemonAsh(pok1, pok1.listaDeMovimientos().last())
 			self.cantarVidaSiEstaVivo(pok2)
 			self.contraatacarSiNoCai(pok2)
 		}
 	}
 	
+	method atacaPokemonAsh(pokemon, ataque) {
+		game.say(pokemon, "¡" + ataque.nombre() + "!")
+		ash.ultimoPokemonColisionado().recibirAtaque(ataque, pokemon)
+	}
+	
 	method contraatacarSiNoCai(pokemon) {
+		var ataqueAUtilizar
+		
 		if(not pokemon.meQuedeSinVida()) { 
-			ash.pokemon().recibirAtaque(ash.ultimoPokemonColisionado().elegirMovimientoDeCombate(), ash.ultimoPokemonColisionado())
+			ataqueAUtilizar = ash.ultimoPokemonColisionado().elegirMovimientoDeCombate()
+			game.say(pokemon, "¡" + ataqueAUtilizar.nombre() + "!")
+			ash.pokemon().recibirAtaque(ataqueAUtilizar, ash.ultimoPokemonColisionado())
 		}
 	}
 	
 	method cantarVidaSiEstaVivo(pokemon) {
 		if(not pokemon.meQuedeSinVida()) {
-			game.say(pokemon, ". Mi vida es " + pokemon.vidaActual())
+			game.say(pokemon, "¡Estoy en " + pokemon.vidaActual() + " puntos de vida!")
 		}
+	}
+	
+	method revertirEstadisticas() {
+		self.reveritirEstadistiacasDeAsh()
+		self.revertirEstadisticasDeEnemigoSiVive()
+	}
+	
+	method reveritirEstadistiacasDeAsh() {
+		ash.pokemon().vidaActual(ash.pokemon().vida())
+		ash.pokemon().ataqueActual(ash.pokemon().ataque())
+		ash.pokemon().defensaActual(ash.pokemon().defensa())
+	}
+	
+	method revertirEstadisticasDeEnemigoSiVive() {
+		if(not ash.ultimoPokemonColisionado().meQuedeSinVida()) { self.revertirEstadisticasDeEnemigo() }
+	}
+	
+	method revertirEstadisticasDeEnemigo() {
+		ash.ultimoPokemonColisionado().vidaActual(ash.ultimoPokemonColisionado().vida())
+		ash.ultimoPokemonColisionado().ataqueActual(ash.ultimoPokemonColisionado().ataque())
+		ash.ultimoPokemonColisionado().defensaActual(ash.ultimoPokemonColisionado().defensa())
 	}
 }
 

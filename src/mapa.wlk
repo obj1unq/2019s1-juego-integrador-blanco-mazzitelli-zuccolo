@@ -136,7 +136,12 @@ object mapa {
 		keyboard.left().onPressDo { ash.move(ash.position().left(1)) }
 		keyboard.right().onPressDo { ash.move(ash.position().right(1)) }
 		
-		keyboard.q().onPressDo { game.say(ash, "¡" + ash.pokemon().nombre() + " yo te elijo!!. " + "Estas a: " + ash.pokemon().vidaActual()) }
+		keyboard.q().onPressDo { game.say(ash, "¡" + ash.pokemon().nombre() + " yo te elijo!") }
+		keyboard.e().onPressDo { game.say(ash, "Las estadisticas de mi pokemon son: "
+													+ "Vida " + ash.pokemon().vidaActual() + ". "
+													+ "Ataque " + ash.pokemon().ataqueActual() + ". "
+													+ "Defensa " + ash.pokemon().defensaActual()
+		)}
 		keyboard.z().onPressDo { ash.hablarConElPublico() }
 		
 		//Colisiones

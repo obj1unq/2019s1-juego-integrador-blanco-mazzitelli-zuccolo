@@ -22,42 +22,44 @@ program Pokemon {
 	agua.agregarDebilidad(planta)
 	veneno.agregarDebilidad(psiquico)
 	psiquico.agregarDebilidad(siniestro)
-	
-	normal.agregarDebilidad(fuego)  // ??? si no lo pongo me explota
+	dragon.agregarDebilidad(dragon)
+	normal.agregarDebilidad(lucha)
+	lucha.agregarDebilidad(psiquico)
+	lucha.agregarDebilidad(volador)
 	
 	// Movimientos.
 	charmander.aprenderMovimiento(ascuas)
-	charmander.aprenderMovimiento(araniazo)
+	charmander.aprenderMovimiento(grunido)
 	
 	charmeleon.aprenderMovimiento(pirotecnia)
 	charmeleon.aprenderMovimiento(cuchillada)
 	
 	charizard.aprenderMovimiento(lanzallamas)
-	charizard.aprenderMovimiento(tajoAereo)
+	charizard.aprenderMovimiento(danzaDragon)
 	
 	megaCharizard.aprenderMovimiento(lanzallamas2)
-	megaCharizard.aprenderMovimiento(tajoAereo)
+	megaCharizard.aprenderMovimiento(danzaDragon)
 	
 	bulbasaur.aprenderMovimiento(latigoCepa)
-	bulbasaur.aprenderMovimiento(placaje)
+	bulbasaur.aprenderMovimiento(grunido)
 	
 	ivysaur.aprenderMovimiento(hojaAfilada)
 	ivysaur.aprenderMovimiento(cargaToxica)
 	
 	venasaur.aprenderMovimiento(rayoSolar)
-	venasaur.aprenderMovimiento(bombaLodo)
+	venasaur.aprenderMovimiento(desarrollo)
 	
 	squirtle.aprenderMovimiento(pistolaAgua)
-	squirtle.aprenderMovimiento(placaje)
+	squirtle.aprenderMovimiento(grunido)
 	
 	wartortle.aprenderMovimiento(rayoBurbuja)
 	wartortle.aprenderMovimiento(mordisco)
 	
 	blastoise.aprenderMovimiento(hidroBomba)
-	blastoise.aprenderMovimiento(triturar)
+	blastoise.aprenderMovimiento(refugio)
 	
 	mewtwo.aprenderMovimiento(ondaPsiquica)
-	mewtwo.aprenderMovimiento(concentrar)
+	mewtwo.aprenderMovimiento(pazMental)
 	
 	ash.pokemon(charmander)
 	

@@ -12,7 +12,9 @@ class Pokemon {
 	var property vida
 	var property vidaActual
 	var property ataque
+	var property ataqueActual
 	var property defensa
+	var property defensaActual
 	var property estado = natural
 	const estadoEvolutivo
 	var property movimientos = []
@@ -24,13 +26,15 @@ class Pokemon {
 	const image2
 	var property barraDeVida = barraVerde
 	
-	constructor(_image, _tipo, _vida, _vidaActual, _ataque, _defensa, _estadoEvolutivo, _nombre) {
+	constructor(_image, _tipo, _vida, _vidaActual, _ataque, _ataqueActual, _defensa, _defensaActual, _estadoEvolutivo, _nombre) {
       	image2 = _image
       	tipo = _tipo
       	vida = _vida
       	vidaActual = _vidaActual
       	ataque = _ataque
+      	ataqueActual = _ataqueActual
       	defensa = _defensa
+      	defensaActual = _defensaActual
       	estadoEvolutivo = _estadoEvolutivo
       	nombre = _nombre
  	}	
@@ -53,6 +57,7 @@ class Pokemon {
 	
 	method recibirAtaque(movimiento, pokemonAtacante) {
 		self.calculoDeDanio(movimiento, pokemonAtacante)
+		movimiento.efectoSecundario(self, pokemonAtacante)
 		self.terminarBatallaSiCai(pokemonAtacante)
 	}
 	
@@ -63,13 +68,14 @@ class Pokemon {
 	method finalizarBatalla(pokemon) {
 		game.clear()
 		self.ashPerdioBatalla()
-		self.revertirVisuales()
+		self.revertirVisualesYStats()
 		self.ashGanoBatalla(pokemon)
 	}
 	
-	method revertirVisuales() {
+	method revertirVisualesYStats() {
 		ash.ultimoPokemonColisionado().revertirImagen()
 		mapa.dibujarMapa()
+		visualBatalla.revertirEstadisticas()
 	}
 	
 	method ashPerdioBatalla() {

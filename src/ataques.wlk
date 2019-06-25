@@ -21,16 +21,16 @@ class Movimiento {
 	method potenciaDelAtaque() = potencia
 	method tipoDelAtaque() = tipo
 	
-	method efectoSecundario(pokemon) 
+	method efectoSecundario(pokemonAtacado, pokemonAtacante) 
 	
 	method calcularDanio(pokemonAtacante, pokemonAtacado) =
-		self.danioTotal(pokemonAtacante, pokemonAtacado) - pokemonAtacado.defensa()
+		self.danioTotal(pokemonAtacante, pokemonAtacado) - pokemonAtacado.defensaActual()
 	
 	method danioTotal(pokemonAtacante, pokemonAtacado) = 
 		if(self.esDebil(pokemonAtacado)) { self.danioVerdadero(pokemonAtacante) * 2 }
 		else { self.danioVerdadero(pokemonAtacante) }
 		
-	method danioVerdadero(pokemonAtacante) = self.potenciaDelAtaque() + pokemonAtacante.ataque()
+	method danioVerdadero(pokemonAtacante) = self.potenciaDelAtaque() + pokemonAtacante.ataqueActual()
 	
 	method esDebil(pokemonAtacado) = pokemonAtacado.tipo().listaDeDebilidades().contains(self.tipoDelAtaque())
 }
@@ -38,158 +38,142 @@ class Movimiento {
 //Ataques de la linea de Charmander.
 //Charmander:
 class Ascuas inherits Movimiento{
-	override method efectoSecundario(pokemon) {
-		if(pokemon.estado() == natural) { self.intentarQuemar(pokemon) }
-		else { game.say(self, "¡El estado de" + pokemon + "ya esta alterado!") }
-	}
-	
-	method intentarQuemar(pokemon) {
-		if(0.randomUpTo(100).truncate(0) <= 40) { pokemon.estado(quemado) }
-		else { }
-	}
+	override method efectoSecundario(pokemonAtacado, pokemonAtacante) { }
 } 
 
-class Araniazo inherits Movimiento {	
-	override method efectoSecundario(pokemon) {  }
+class Latigo inherits Movimiento {	
+	override method efectoSecundario(pokemonAtacado, pokemonAtacante) { 
+		pokemonAtacado.defensaActual((pokemonAtacado.defensaActual() / 1.5).truncate(0))
+		game.say(pokemonAtacado, "Me bajo la defensa de " + pokemonAtacado.defensa() + " a " + pokemonAtacado.defensaActual())
+	}
+	
+	override method calcularDanio(pokemonAtacante, pokemonAtacado) = 0
 }
 
 //Charmeleon:
 class Pirotecnia inherits Movimiento {
-	override method efectoSecundario(pokemon) {
-		if(pokemon.estado() == natural) { self.intentarQuemar(pokemon) }
-		else { game.say(self, "¡El estado de" + pokemon + "ya esta alterado!") }
-	}
-	
-	method intentarQuemar(pokemon) {
-		if(0.randomUpTo(100).truncate(0) <= 40) { pokemon.estado(quemado) }
-		else { }
-	}
+	override method efectoSecundario(pokemonAtacado, pokemonAtacante) { }
 }
 
 class Cuchillada inherits Movimiento{
-	override method efectoSecundario(pokemon) { }
+	override method efectoSecundario(pokemonAtacado, pokemonAtacante) { }
 }
 
 //Charizard: 
 class Lanzallamas inherits Movimiento {
-	override method efectoSecundario(pokemon) {
-		if(pokemon.estado() == natural) { self.intentarQuemar(pokemon) }
-		else { game.say(self, "¡El estado de" + pokemon + "ya esta alterado!") }
-	}
-	
-	method intentarQuemar(pokemon) {
-		if(0.randomUpTo(100).truncate(0) <= 40) { pokemon.estado(quemado) }
-		else { }
-	}
+	override method efectoSecundario(pokemonAtacado, pokemonAtacante) { }
 }
 
-class TajoAereo inherits Movimiento{
-	override method efectoSecundario(pokemon) { }
+class DanzaDragon inherits Movimiento{
+	override method efectoSecundario(pokemonAtacado, pokemonAtacante) { 
+		pokemonAtacante.ataqueActual((pokemonAtacante.ataqueActual() * 1.5).truncate(0))
+		game.say(pokemonAtacante, "¡Mi ataque subió de " + pokemonAtacante.ataque() + " a " + pokemonAtacante.ataqueActual())
+	}
+	
+	override method calcularDanio(pokemonAtacante, pokemonAtacado) = 0
 }
 
 const ascuas = new Ascuas(20, fuego, "ascuas.png", "Ascuas")
-const araniazo = new Araniazo(15, normal, "araniazo.png", "Arañazo")
+const latigo = new Latigo(0, normal, "látigo.png", "Látigo")
 const pirotecnia = new Pirotecnia(60, fuego, "pirotecnia.png", "Pirotecnia")
 const cuchillada = new Cuchillada(70, normal, "cuchillada.png", "Cuchillada")
 const lanzallamas = new Lanzallamas(90, fuego, "lanzallamas.png", "Lanzallamas")
 const lanzallamas2 = new Lanzallamas(150, fuego, "lanzallamas.png", "Lanzallamas")
-const tajoAereo = new TajoAereo(100, volador, "tajoAereo.png", "Tajo Aéreo")
+const danzaDragon = new DanzaDragon(0, dragon, "danzaDragon.png", "Danza dragón")
 
 //Ataques de la linea de Bulbasaur.
 //Bulbasaur:
 class LatigoCepa inherits Movimiento {
-	override method efectoSecundario(pokemon) {  }
+	override method efectoSecundario(pokemonAtacado, pokemonAtacante) {  }
 }
 
-class Placaje inherits Movimiento {
-	override method efectoSecundario(pokemon) {  }
+class Grunido inherits Movimiento {
+	override method efectoSecundario(pokemonAtacado, pokemonAtacante) { 
+		pokemonAtacado.ataqueActual((pokemonAtacado.ataqueActual() / 1.5).truncate(0))
+		game.say(pokemonAtacado, "Me bajo el ataque de " + pokemonAtacado.ataque() + " a " + pokemonAtacado.ataqueActual())
+	}
+	
+	override method calcularDanio(pokemonAtacante, pokemonAtacado) = 0
 }
 
 //Ivysaur:
 class HojaAfilada inherits Movimiento{
-	override method efectoSecundario(pokemon) { }
+	override method efectoSecundario(pokemonAtacado, pokemonAtacante) { }
 }
 
 class CargaToxica inherits Movimiento {
-	override method efectoSecundario(pokemon) {
-		if(pokemon.estado() == natural) { self.intentarEnvenenar(pokemon) }
-		else { game.say(self, "¡El estado de" + pokemon + "ya esta alterado!") }
-	}
-	
-	method intentarEnvenenar(pokemon) {
-		if(0.randomUpTo(100).truncate(0) <= 40) { pokemon.estado(envenenado) }
-		else { }
-	}
+	override method efectoSecundario(pokemonAtacado, pokemonAtacante) { }
 }
 
 //Venusaur:
 class RayoSolar inherits Movimiento {
-	override method efectoSecundario(pokemon) {  }
+	override method efectoSecundario(pokemonAtacado, pokemonAtacante) {  }
 }
 
-class BombaLodo inherits Movimiento {
-	override method efectoSecundario(pokemon) {
-		if(pokemon.estado() == natural) { self.intentarEnvenenar(pokemon) }
-		else { game.say(self, "¡El estado de" + pokemon + "ya esta alterado!") }
+class Desarrollo inherits Movimiento {
+	override method efectoSecundario(pokemonAtacado, pokemonAtacante) { 
+		pokemonAtacante.ataqueActual((pokemonAtacante.ataqueActual() * 1.5).truncate(0))
+		game.say(pokemonAtacante, "¡Mi ataque subió de " + pokemonAtacante.ataque() + " a " + pokemonAtacante.ataqueActual())
 	}
 	
-	method intentarEnvenenar(pokemon) {
-		if(0.randomUpTo(100).truncate(0) <= 40) { pokemon.estado(envenenado) }
-		else { }
-	}
+	override method calcularDanio(pokemonAtacante, pokemonAtacado) = 0
 }
 
 const latigoCepa = new LatigoCepa(15, planta, "latigoCepa.png", "Latigo Cepa")
-const placaje = new Placaje(20, normal, "placaje.png", "Placaje")
+const grunido = new Grunido(0, normal, "gruñido.png", "Gruñido")
 const hojaAfilada = new HojaAfilada(45, planta, "hojaAfilada.png", "Hoja Afilada")
 const cargaToxica = new CargaToxica(40, veneno, "cargaToxica.png", "Carga Tóxica")
 const rayoSolar = new RayoSolar(120, planta, "rayoSolar.png", "Rayo Solar")
-const bombaLodo = new BombaLodo(150, veneno, "bombaLodo.png", "Bomba Lodo")
+const desarrollo = new Desarrollo(0, planta, "desarrollo.png", "Desarrollo")
 
 //Ataques de la linea de Squirtle-
 //Squirtle: (+ placaje)
 class PistolaAgua inherits Movimiento {
-	override method efectoSecundario(pokemon) {  }
+	override method efectoSecundario(pokemonAtacado, pokemonAtacante) {  }
 }
 
 //Wartortle:
 class RayoBurbuja inherits Movimiento {
-	override method efectoSecundario(pokemon) { if(0.randomUpTo(100) <= 30) { pokemon.velocidad(self.diezPorcientoDe(pokemon)) } else { } }
-	method diezPorcientoDe(pokemon) = ( pokemon.velocidad() * 90 ) / 100
+	override method efectoSecundario(pokemonAtacado, pokemonAtacante) { }
 }
 
 class Mordisco inherits Movimiento {
-	override method efectoSecundario(pokemon) {  }
+	override method efectoSecundario(pokemonAtacado, pokemonAtacante) {  }
 }
 
 //Blastoise:
 class HidroBomba inherits Movimiento {
-	override method efectoSecundario(pokemon) {  }
+	override method efectoSecundario(pokemonAtacado, pokemonAtacante) {  }
 }
 
-class Triturar inherits Movimiento {
-	override method efectoSecundario(pokemon) {  }
+class Refugio inherits Movimiento {
+	override method efectoSecundario(pokemonAtacado, pokemonAtacante) { 
+		pokemonAtacante.defensaActual((pokemonAtacante.defensaActual() * 1.5).truncate(0))
+		game.say(pokemonAtacante, "¡Mi defensa subió de " + pokemonAtacante.defensa() + " a " + pokemonAtacante.defensaActual())
+	}
+	
+	override method calcularDanio(pokemonAtacante, pokemonAtacado) = 0
 }
 
 const pistolaAgua = new PistolaAgua(20, agua, "pistolaAgua.png", "Pistola Agua")
 const rayoBurbuja = new RayoBurbuja(60, agua, "rayoBurbuja.png", "Rayo Burbuja")
 const mordisco = new Mordisco(40, siniestro, "mordisco.png", "Mordisco")
 const hidroBomba = new HidroBomba(80, agua, "hidroBomba.png", "Hidrobomba")
-const triturar = new Triturar(70, siniestro, "triturar.png", "Triturar")
+const refugio = new Refugio(0, normal, "refugio.png", "Refugio")
 
 //Boss:
 class OndaPsiquica inherits Movimiento {
-	override method efectoSecundario(pokemon) { if(0.randomUpTo(100) <= 30) { pokemon.defensa(self.diezPorcientoDe(pokemon)) } else { } }
-	method diezPorcientoDe(pokemon) = ( pokemon.defensa() * 90 ) / 100
+	override method efectoSecundario(pokemonAtacado, pokemonAtacante) { }
 }
 
-class Concentrar inherits Movimiento {
-	override method efectoSecundario(pokemon) {
-		if(0.randomUpTo(100) <= 30) { pokemon.ataque(pokemon.ataque() + self.diezPorcientoDe(pokemon)) } 
-		else { }
+class PazMental inherits Movimiento {
+	override method efectoSecundario(pokemonAtacado, pokemonAtacante) { 
+		pokemonAtacante.ataqueActual((pokemonAtacante.ataqueActual() * 2).truncate(0))
+		game.say(pokemonAtacante, "¡Mi ataque subió de " + pokemonAtacante.ataque() + " a " + pokemonAtacante.ataqueActual())
 	}
-	method diezPorcientoDe(pokemon) = ( pokemon.defensa() * 90 ) / 100
+	
+	override method calcularDanio(pokemonAtacante, pokemonAtacado) = 0
 }
 
 const ondaPsiquica = new OndaPsiquica(150, psiquico, "psiquico.png", "Psíquico")
-const concentrar = new Concentrar(100, psiquico, "concentrar.png", "Concentrar")
+const pazMental = new PazMental(0, psiquico, "pazMental.png", "Paz Mental")
